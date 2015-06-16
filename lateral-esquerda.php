@@ -56,6 +56,7 @@ if($lBC->getTotal() > 0){
 	$iLE->condicao('condicao->Banners', false);*/
 
 
+
 //Categorias
 $lPO = new ListaProdutoOpcoes;
 $lPOV = new ListaProdutoOpcaoValores;
@@ -82,71 +83,44 @@ else
 	
 $lPC = new ListaProdutoCategorias;
 $lPC->condicoes();
+$condcategorias = false;
 if(!empty($_GET['idcategoria']))
 	$lPC->condicoes('', $_GET['idcategoria'], ListaProdutoCategorias::ID);
 elseif(!empty($procura)){
-	
 	$lU = new ListaURLs;
 	
 	$cond[1] = array('campo' => ListaURLs::URL, 	'valor' => $procura);
 	$cond[2] = array('campo' => ListaURLs::TABELA, 	'valor' => $lPC->getTabela());
 	
 	if($lU->condicoes($cond)->getTotal() > 0){
+        $condcategorias = true;
 		$lPC->condicoes('', $lU->listar()->valor, ListaProdutoCategorias::ID);	
 	}
 
 }
 
+$iLE->condicao('condicao->CategoriaSelecionada', $condcategorias);
 if($lPC->getTotal() > 0){
 	
 	$pCA 	= $lPC->listar();
-	$allCat = $pCA->getIdAllSubCategoria();
-	$sqlCat = '';
-	for($i = 0; $i < count($allCat); $i++){
-		$sqlCat .= $allCat[$i];
-		if($i < count($allCat)-1)
-			$sqlCat .= ', ';
-	}
-	$sqlFiltros = "SELECT pov.*, 
-						(SELECT po.nome 
-							FROM ".Sistema::$BDPrefixo.$lPO->getTabela()." po 
-							WHERE po.id = pov.opcao) as nomeopcao 
-						FROM ".Sistema::$BDPrefixo.$lPOV->getTabela()." pov 
-						WHERE pov.id IN 
-							(SELECT pog.valor 
-								FROM ".Sistema::$BDPrefixo.$lPOG->getTabela()." pog 
-								WHERE pog.produto IN 
-									(SELECT j.id FROM ((SELECT rpc.produto as id
-										FROM ".Sistema::$BDPrefixo."relacionamento_produtos_categorias rpc
-										WHERE rpc.categoria IN 
-											(".$sqlCat.")
-									)
-									UNION
-									(SELECT p.id as id
-										FROM ".Sistema::$BDPrefixo.$lP->getTabela()." p 
-										WHERE p.produtopai IN 
-											(SELECT rpc2.produto
-												FROM ".Sistema::$BDPrefixo."relacionamento_produtos_categorias rpc2
-												WHERE rpc2.categoria IN
-													(".$sqlCat.")
-											)
-									)) j)
-							)
-							AND 
-							(SELECT po.filtro 
-								FROM ".Sistema::$BDPrefixo.$lPO->getTabela()." po 
-								WHERE po.id = pov.opcao) = '".ListaProdutoOpcoes::VALOR_FILTRO_TRUE."' 
-						ORDER BY nomeopcao, pov.valor ASC";
-}else{
-	$pCA 	= new ProdutoCategoria;
-	$sqlFiltros = "SELECT pov.*, po.nome as nomeopcao
-						FROM ".Sistema::$BDPrefixo.$lPOV->getTabela()." pov
-						INNER JOIN ".Sistema::$BDPrefixo.$lPO->getTabela()." po
-							ON po.id = pov.opcao
-						WHERE po.filtro = '".ListaProdutoOpcoes::VALOR_FILTRO_TRUE."'
-						ORDER BY nomeopcao, pov.valor ASC";
-}
 
+    // Retorna as informações da categoria selecionada
+    $iLE->trocar('nome.CategoriaSelecionada', $idioma->getTraducaoByConteudo($pCA->nome)->traducao);
+
+    $pSCA = $pCA->getSubCategorias();
+    $iLE->condicao('condicao->CategoriaSelecionadaPai', $pSCA->getTotal() > 0);
+    $iLE->createRepeticao('repetir->CategoriaSelecionada.SubCategorias');
+    while($pC = $pSCA->listar("ASC", ListaProdutoCategorias::ORDEM)) {
+
+        $iLE->repetir();
+
+        $iLE->enterRepeticao()->trocar('id.ProdutoCategoriaSelecionada', $pC->getId());
+        $iLE->enterRepeticao()->trocar('nome.ProdutoCategoriaSelecionada', $idioma->getTraducaoById(ListaProdutoCategorias::NOME, $lPC->getTabela(), $pC->getId())->traducao);
+        $iLE->enterRepeticao()->trocar('url.Imagem.ProdutoCategoriaSelecionada', $pC->getImagem()->pathImage(282, 118));
+        $iLE->enterRepeticao()->trocar('linkVisualizar.ProdutoCategoriaSelecionada', Sistema::$caminhoURL.$_SESSION['lang']."/produtos/".$pC->getURL()->url);
+    }
+
+}
 
 $lPC->condicoes('', $pCA->getIdCategoriaPai(), ListaProdutoCategorias::ID);
 if($lPC->getTotal() > 0){
@@ -172,10 +146,12 @@ $iLE->trocar('linkVisualizar.ProdutoCategoriaPai', Sistema::$caminhoURL.$_SESSIO
 
 $aPC[1] = array('campo' => ListaProdutoCategorias::DISPONIVEL, 'valor' => ListaProdutoCategorias::VALOR_DISPONIVEL_TRUE);
 
+/*
 if($pCA->visaoUnica)
 	$aPC[2] = array('campo' => ListaProdutoCategorias::ID, 'valor' => $pCA->getId());
 elseif($visaoUnicaPai)
 	$aPC[2] = array('campo' => ListaProdutoCategorias::ID, 'valor' => $idPai);
+*/
 
 $pCP->getSubCategorias()->condicoes($aPC);
 $iLE->createRepeticao('repetir->ProdutoCategorias');
@@ -195,42 +171,42 @@ while($pC = $pCP->getSubCategorias()->listar("ASC", ListaProdutoCategorias::ORDE
 	$iLE->enterRepeticao()->condicao('condicao->Pointer', $pagina === 'produtos' && !empty($procura));
 	$iLE->enterRepeticao()->createRepeticao("repetir->ProdutoCategorias.ProdutoCategoria");
 	if($pC->getSubCategorias()->getTotal() > 0){
-		
+
 		while($c = $pC->getSubCategorias()->listar("ASC", ListaProdutoCategorias::ORDEM)){
-			
+
 			$iLE->enterRepeticao()->repetir();
-			
+
 			$iLE->enterRepeticao()->enterRepeticao()->trocar("id.ProdutoCategoria.ProdutoCategoria", $c->getId());
 			$iLE->enterRepeticao()->enterRepeticao()->trocar("nome.ProdutoCategoria.ProdutoCategoria", $idioma->getTraducaoById(ListaProdutoCategorias::NOME, $lPC->getTabela(), $c->getId())->traducao);
 			$iLE->enterRepeticao()->enterRepeticao()->trocar("linkVisualizar.ProdutoCategoria.ProdutoCategoria", Sistema::$caminhoURL.$_SESSION['lang']."/produtos/".$c->getURL()->url);
-			
+
 			if($c->getId() == $pCA->getId())
 				$filtros = true;
-				
+
 			$c->getSubCategorias()->condicoes($aPSC);
 			$iLE->enterRepeticao()->enterRepeticao()->condicao('condicao->SubCategorias.ProdutoCategoria.ProdutoCategoria', $c->getSubCategorias()->getTotal() > 0);
 			$iLE->enterRepeticao()->enterRepeticao()->createRepeticao("repetir->ProdutoCategorias.ProdutoCategoria.ProdutoCategoria");
 			//echo $pC->nome." - ".$c->nome.": ".$c->getSubCategorias()->getTotal()."
 //";
 			if($c->getSubCategorias()->getTotal() > 0){
-				
+
 				while($c2 = $c->getSubCategorias()->listar("ASC", ListaProdutoCategorias::ORDEM)){
-					
+
 					$iLE->enterRepeticao()->enterRepeticao()->repetir();
-					
+
 					$iLE->enterRepeticao()->enterRepeticao()->enterRepeticao()->trocar("id.ProdutoCategoria.ProdutoCategoria.ProdutoCategoria", $c2->getId());
 					$iLE->enterRepeticao()->enterRepeticao()->enterRepeticao()->trocar("nome.ProdutoCategoria.ProdutoCategoria.ProdutoCategoria", $idioma->getTraducaoById(ListaProdutoCategorias::NOME, $lPC->getTabela(), $c2->getId())->traducao);
 					$iLE->enterRepeticao()->enterRepeticao()->enterRepeticao()->trocar("linkVisualizar.ProdutoCategoria.ProdutoCategoria.ProdutoCategoria", Sistema::$caminhoURL.$_SESSION['lang']."/produtos/".$c2->getURL()->url);
-					
+
 					if($c2->getId() == $pCA->getId())
 						$filtros = true;
-					
+
 				}
-				
+
 			}
-			
+
 		}
-		
+
 	}
 	
 	if($pC->getId() == $pCA->getId() || ($pCA->getId() == '' && $pCP->getSubCategorias()->getParametros() == $pCP->getSubCategorias()->getTotal()))

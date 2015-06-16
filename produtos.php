@@ -1,7 +1,7 @@
 <?php
-
 importar("LojaVirtual.Categorias.Lista.ListaProdutoCategorias");
 importar("LojaVirtual.Produtos.ProdutoBusca");
+
 
 if(!empty($procura2)){
 
@@ -27,20 +27,20 @@ if(!empty($procura2)){
 	
 	$lPM = new ListaProdutoMarcas;
 	if(!empty($_GET['marca'])){
-		
 		$lU = new ListaURLs;
 		
 		$cond[1] = array('campo' => ListaURLs::URL, 	'valor' => $_GET['marca']);
 		$cond[2] = array('campo' => ListaURLs::TABELA, 	'valor' => $lPM->getTabela());
 		
 		if($lU->condicoes($cond)->getTotal() > 0){
-			$lPM->condicoes('', $lU->listar()->valor, ListaProdutoMarcas::ID);	
+			$lPM->condicoes('', $lU->listar()->valor, ListaProdutoMarcas::ID);
 		}
 	
 	}
-	if($lPM->getTotal() > 0)
-		$pM 	= $lPM->listar();
-	else
+	if($lPM->getTotal() > 0) {
+        $pM = $lPM->listar();
+        $iTP->trocar('titulo',$idioma->getTraducaoByConteudo($pM->nome)->traducao);
+    }else
 		$pM 	= new ProdutoMarca;	
 	$lPM->close();
 	
@@ -75,8 +75,9 @@ if(!empty($procura2)){
 	$titulo = strip_tags($nav);
 	$descricao = $pCP->descricao;
 	//
-	
-	$iTP->trocar('descricao.ProdutoCategoria', $idioma->getTraducaoByConteudo($pCP->descricao)->traducao);
+
+    $iTP->trocar('titulo',$idioma->getTraducaoByConteudo($titulo)->traducao);
+    $iTP->trocar('descricao.ProdutoCategoria', $idioma->getTraducaoByConteudo($pCP->descricao)->traducao);
 	
 	if(!empty($_SESSION['usuario']))
 		$lancamento = 1;
@@ -176,9 +177,10 @@ if(!empty($procura2)){
 				$maximo = $minimo+$por;
 				
 				$lP->setParametros($minimo)->setParametros($maximo, 'limite');
-				
+
+                $i=0;
 				while($p = $lP->listar("ASC", ListaProdutos::NOME)){
-					
+					$i++;
 					$num++;
 							
 					$iTP->enterRepeticao()->repetir();
@@ -238,7 +240,7 @@ if(!empty($procura2)){
 						$img = $p->getImagens()->listar("DESC", ListaImagens::DESTAQUE);
 						if($img->getImage()->nome != ''){
 							$iTP->enterRepeticao()->enterRepeticao()->trocar('imagem.Produto', $img->getImage()->showHTML(242, 200));
-							$iTP->enterRepeticao()->enterRepeticao()->trocar('url.Imagem.Produto', $img->getImage()->pathImage(242, 200));
+							$iTP->enterRepeticao()->enterRepeticao()->trocar('url.Imagem.Produto', $img->getImage()->pathImage(500, 500));
 						}
 					}
 					
@@ -418,7 +420,7 @@ if(!empty($procura2)){
 			}
 			$iTP->trocar('navegador.ProdutoCategoria', $total > 0 ? "<li>".$idioma->getTraducaoByConteudo('busca realizada por')->traducao.' <i>"'.$_GET['busca'].'"</i></li>' : "<li>".$idioma->getTraducaoByConteudo('nenhum item encontrado por')->traducao.' "<i>'.$_GET['busca'].'</i></li>"');
 		}
-		
+
 		if(!empty($pCP->nome))
 			$iTP->trocar('traduzir->Produtos', $idioma->getTraducaoByConteudo($pCP->nome)->traducao);
 			
@@ -439,6 +441,7 @@ if(!empty($procura2)){
 			
 			$lP->setParametros($minimo)->setParametros($maximo, 'limite');
 			$lP->enableDadosProdutoPai();
+
 			
 			if($_GET['order'] == 1 || empty($_GET['order'])){
 				$order = ListaProdutos::NOME;
@@ -454,7 +457,7 @@ if(!empty($procura2)){
 				$order = ListaProdutos::VALORREAL;
 				$dir = "DESC";
 			}
-			
+
 			//Filtros
 			$urlFiltros = '';
 			if(count($arrayFiltros) > 0){
@@ -465,15 +468,22 @@ if(!empty($procura2)){
 			//
 			$iTP->trocar('order', $_GET['order']);
 			$iTP->trocar('linkOrdenar', Sistema::$caminhoURL.$_SESSION['lang']."/produtos".(!empty($procura) ? "/".$procura."/" : '/')."&pag=".($_GET['pag'])."&busca=".$_GET['busca']."&marca=".$_GET['marca'].$urlFiltros."&");
-			
+            $i=0;
 			while($p = $lP->listar($dir, $order)){
-				
+
 				$num++;
+                $i++;
 						
 				$iTP->repetir();
 				
 				$cat = $p->getCategorias()->listar();
-				
+
+
+                $iTP->enterRepeticao()->condicao('condicao->BreakLine', $i>=3);
+                if($i >= 3){
+                    $i=0;
+                }
+
 				$iTP->enterRepeticao()->trocar('id.Produto', $p->getId());
 				$iTP->enterRepeticao()->trocar('codigo.Produto', $p->codigo);
 				$nome = $idioma->getTraducaoById(ListaProdutos::NOME, $lP->getTabela(), $p->getId())->traducao;
@@ -527,7 +537,7 @@ if(!empty($procura2)){
 					$img = $p->getImagens()->listar("DESC", ListaImagens::DESTAQUE);
 					if($img->getImage()->nome != ''){
 						$iTP->enterRepeticao()->trocar('imagem.Produto', $img->getImage()->showHTML(242, 200));
-						$iTP->enterRepeticao()->trocar('url.Imagem.Produto', $img->getImage()->pathImage(242, 200));
+						$iTP->enterRepeticao()->trocar('url.Imagem.Produto', $img->getImage()->pathImage(300, 300));
 					}
 				}else{
 					$iTP->enterRepeticao()->trocar('imagem.Produto', '<img src="'.Sistema::$caminhoURL.'lib.img/sem-imagem.gif" height="200" />');
@@ -617,14 +627,17 @@ if(!empty($procura2)){
 				$iTP->enterRepeticao('repetir->Paginador.Rodape.Produtos')->trocar('linkVisualizar.Pagina.Produtos', Sistema::$caminhoURL.$_SESSION['lang']."/produtos".(!empty($procura) ? "/".$procura."/" : '/')."&pag=".($i-1)."&busca=".$_GET['busca']."&marca=".$_GET['marca']."&order=".$_GET['order'].$urlFiltros);
 				
 			}
-			
-			$iTP->condicao('condicao->Anterior.Paginador.Topo.Produtos', $_GET['pag']+1 > 1);
+
+            $ant = ($_GET['pag']-1);
+            $prox = ($_GET['pag']+1);
+
+			$iTP->condicao('condicao->Anterior.Paginador.Topo.Produtos', $ant < 0);
 			$iTP->condicao('condicao->Proximo.Paginador.Topo.Produtos', $_GET['pag']+1 < $max);
 			$iTP->trocar('linkVisualizar.Anterior.Paginador.Topo.Produtos', Sistema::$caminhoURL.$_SESSION['lang']."/produtos".(!empty($procura) ? "/".$procura."/" : '/')."&pag=".($_GET['pag']-1)."&busca=".$_GET['busca']."&marca=".$_GET['marca']."&order=".$_GET['order'].$urlFiltros);
 			$iTP->trocar('linkVisualizar.Proximo.Paginador.Topo.Produtos', Sistema::$caminhoURL.$_SESSION['lang']."/produtos".(!empty($procura) ? "/".$procura."/" : '/')."&pag=".($_GET['pag']+1)."&busca=".$_GET['busca']."&marca=".$_GET['marca']."&order=".$_GET['order'].$urlFiltros);
 			
 			$iTP->condicao('condicao->Anterior.Paginador.Rodape.Produtos', $_GET['pag']+1 > 1);
-			$iTP->condicao('condicao->Proximo.Paginador.Rodape.Produtos', $_GET['pag']+1 < $max);
+			$iTP->condicao('condicao->Proximo.Paginador.Rodape.Produtos', $prox >= $max);
 			$iTP->trocar('linkVisualizar.Anterior.Paginador.Rodape.Produtos', Sistema::$caminhoURL.$_SESSION['lang']."/produtos".(!empty($procura) ? "/".$procura."/" : '/')."&pag=".($_GET['pag']-1)."&busca=".$_GET['busca']."&marca=".$_GET['marca']."&order=".$_GET['order'].$urlFiltros);
 			$iTP->trocar('linkVisualizar.Proximo.Paginador.Rodape.Produtos', Sistema::$caminhoURL.$_SESSION['lang']."/produtos".(!empty($procura) ? "/".$procura."/" : '/')."&pag=".($_GET['pag']+1)."&busca=".$_GET['busca']."&marca=".$_GET['marca']."&order=".$_GET['order'].$urlFiltros);
 			

@@ -9,11 +9,17 @@ class Image extends NewImage {
 	  public function __construct($imagem = ''){
 		  
 		  if(!empty($imagem)){
-		  
-		  	$this->extensao = $imagem->extensao;
-			$this->nome = $imagem->nome;
-			$this->url = $imagem->url;
-			$this->imagem = $imagem;
+
+              $this->extensao = $imagem->extensao;
+              $this->nome = $imagem->nome;
+              $this->url = $imagem->url;
+              $this->imagem = $imagem;
+
+              $size = getimagesize($this->url);
+
+              $this->original_width = $size[0];
+              $this->original_height = $size[1];
+
 
 		  }else
 		  	parent::__construct(1, 1);

@@ -35,7 +35,10 @@ class ListaProdutos extends Lista {
 	const TIPOPEDIDO				= 'tipopedido';
 	
 	const VALOR_DISPONIVEL_TRUE 	= 1;
-	const VALOR_DISPONIVEL_FALSE 	= 0;
+    const VALOR_DISPONIVEL_FALSE 	= 0;
+
+    const VALOR_DESTAQUE_TRUE 	    = 1;
+    const VALOR_DESTAQUE_FALSE 	    = 0;
 	
 	protected	$carregarDadosPai	= true;
 	

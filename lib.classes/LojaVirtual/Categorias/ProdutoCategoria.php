@@ -26,7 +26,7 @@ class ProdutoCategoria extends Objeto {
 	public function __construct($id = ''){
 		
 		parent::__construct($id);
-		
+
 		$this->idCategoriaPai	= '';
 		$this->nome 			= '';
 		$this->descricaoPequena	= '';
@@ -35,11 +35,11 @@ class ProdutoCategoria extends Objeto {
 		$this->url				= new URL;
 		$this->disponivel		= true;
 		$this->visaoUnica		= false;
-		
+
 		$this->subC 			= new ListaProdutoCategorias;
 		$aPC[1] 				= array('campo' => ListaProdutoCategorias::CATEGORIAPAI, 'valor' => $this->getId());
 		$this->subC->condicoes($aPC);
-		
+
 		$this->produtos 		= new ListaProdutos;
 		$this->produtos->condicoes('', '', '', '', "SELECT * FROM ".Sistema::$BDPrefixo."relacionamento_produtos_categorias rpc INNER JOIN ".Sistema::$BDPrefixo."produtos p ON p.id = rpc.produto WHERE rpc.categoria = '".$this->id."'");
 		
@@ -65,7 +65,7 @@ class ProdutoCategoria extends Objeto {
 	}
 	
 	public function getSubCategorias(){
-		
+
 		return $this->subC;
 		
 	}
@@ -89,7 +89,7 @@ class ProdutoCategoria extends Objeto {
 	}
 	
 	public function getNavegador(Templates $tem = null, $separador = " > "){
-		
+
 		$lI  		= new ListaIdiomas;
 		if(isset($this->session['lang'])){
 			if($lI->condicoes('', $this->session['lang'], ListaIdiomas::SIGLA)->getTotal() > 0)
@@ -98,67 +98,67 @@ class ProdutoCategoria extends Objeto {
 				$idioma = new Idioma;
 		}else
 			$idioma = new Idioma;
-			
-		
+
+
 		return self::createNavegador($this, $idioma, $tem, $separador);
-		
+
 	}
 	
 	public static function createNavegador(ProdutoCategoria $pC, Idioma $idioma = null, Templates $tem = null, $separador = " > "){
-		
+
 		$lPC = new ListaProdutoCategorias;
 		$lPC->condicoes('', $pC->getIdCategoriaPai(), ListaProdutoCategorias::ID);
-		
+
 		if($lPC->getTotal() > 0){
-			
+
 			$cPC = $lPC->listar();
-			
+
 			if($tem){
-				
+
 				$tem2 = new Templates(Arquivos::__Create($tem->getArquivo()->arquivo));
-				
+
 				if($idioma)
 					$tem->trocar("nome", $idioma->getTraducaoByConteudo($pC->nome)->traducao);
 				else
 					$tem->trocar("nome", $pC->nome);
-				
+
 				$tem->trocar("url", $pC->getURL()->url);
 				$tem->trocar("id", $pC->getId());
 				$tem->trocar("ordem", $pC->ordem);
-				
+
 				if($pC->getId() != '') return self::createNavegador($cPC, $idioma, $tem2, $separador).$separador.$tem->concluir();
-				
+
 			}else{
-				
+
 				if($idioma)
 					return self::createNavegador($cPC, $idioma, null, $separador).$separador.$idioma->getTraducaoByConteudo($pC->nome)->traducao;
 				else
 					return self::createNavegador($cPC, null, null, $separador).$separador.$pC->nome;
-				
+
 			}
-			
+
 		}else{
-			
+
 			if($tem){
-				
+
 				if($idioma)
 					$tem->trocar("nome", $idioma->getTraducaoByConteudo($pC->nome)->traducao);
 				else
 					$tem->trocar("nome", $pC->nome);
-				
+
 				$tem->trocar("url", $pC->getURL()->url);
 				$tem->trocar("id", $pC->getId());
 				$tem->trocar("ordem", $pC->ordem);
-				
+
 				if($pC->getId() != '') return $tem->concluir();
-				
+
 			}else
 				if($idioma)
 					return $idioma->getTraducaoByConteudo($pC->nome)->traducao;
-				else	
+				else
 					return $pC->nome;
 
-			
+
 		}
 		
 	}

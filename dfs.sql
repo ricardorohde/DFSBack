@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Banco de dados: `pioneeri_v3`
+-- Banco de dados: `jnt_dfs`
 --
 
 -- --------------------------------------------------------

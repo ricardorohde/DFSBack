@@ -23,7 +23,6 @@ class NewImage {
 		  
 		  $background = @imagecolorallocatealpha($this->imagem, 255, 255, 255, 127); 		  
           @imagefill($this->imagem, 0, 0, $background);
-		  
 	  }
 	  
 	  protected function alfa(&$temp = ''){
@@ -168,7 +167,7 @@ class NewImage {
 	 }
 	 
 	 public function getImage($ext = '', $qualidade = 100){
-		  
+
 		  if(empty($ext)) $ext = $this->extensao;
 		  if(empty($ext)) $ext = 'jpg';
 		 

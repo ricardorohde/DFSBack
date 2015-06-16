@@ -24,58 +24,59 @@ $imagem			= '';
 $descricao		= '';
 
 if(!empty($_SESSION['lang'])){
-	
-	if(!empty($_GET['lang'])){
-		
-		if($_GET['lang'] == 'favicon.ico'){
-			$_GET['lang'] = 'br';
-			$_SESSION['lang'] = 'br';
-			header("Location: ".Sistema::$caminhoURL.'br');
-			exit;
-		}elseif($_GET['lang'] == 'lib.templates'){
-			$_GET['lang'] = 'br';
-			$_SESSION['lang'] = 'br';
-			header("Location: ".Sistema::$caminhoURL.'br');
-			exit;
-		}elseif($_GET['lang'] == '500.shtml'){
-			$_GET['lang'] = 'br';
-			$_SESSION['lang'] = 'br';
-			header("Location: ".Sistema::$caminhoURL.'br');
-			exit;
-		}
-		
-		$_SESSION['lang'] = $_GET['lang'];
-	}else{
-		header("Location: ".Sistema::$caminhoURL.$_SESSION['lang']);
-		exit;
-	}
-	
+
+    if(!empty($_GET['lang'])){
+
+        if($_GET['lang'] == 'favicon.ico'){
+            $_GET['lang'] = 'br';
+            $_SESSION['lang'] = 'br';
+            header("Location: ".Sistema::$caminhoURL.'br');
+            exit;
+        }elseif($_GET['lang'] == 'lib.templates'){
+            $_GET['lang'] = 'br';
+            $_SESSION['lang'] = 'br';
+            header("Location: ".Sistema::$caminhoURL.'br');
+            exit;
+        }elseif($_GET['lang'] == '500.shtml'){
+            $_GET['lang'] = 'br';
+            $_SESSION['lang'] = 'br';
+            header("Location: ".Sistema::$caminhoURL.'br');
+            exit;
+        }
+
+        $_SESSION['lang'] = $_GET['lang'];
+    }else{
+        header("Location: ".Sistema::$caminhoURL.$_SESSION['lang']);
+        exit;
+    }
+
 }elseif(!empty($_GET['lang'])){
-	
-	if($_GET['lang'] == 'favicon.ico'){
-		$_GET['lang'] = 'br';
-		$_SESSION['lang'] = 'br';
-		header("Location: ".Sistema::$caminhoURL.'br');
-		exit;
-	}elseif($_GET['lang'] == 'lib.templates'){
-		$_GET['lang'] = 'br';
-		$_SESSION['lang'] = 'br';
-		header("Location: ".Sistema::$caminhoURL.'br');
-		exit;
-	}elseif($_GET['lang'] == '500.shtml'){
-		$_GET['lang'] = 'br';
-		$_SESSION['lang'] = 'br';
-		header("Location: ".Sistema::$caminhoURL.'br');
-		exit;
-	}
-	
-	$_SESSION['lang'] = $_GET['lang'];
-	
+
+    if($_GET['lang'] == 'favicon.ico'){
+        $_GET['lang'] = 'br';
+        $_SESSION['lang'] = 'br';
+        header("Location: ".Sistema::$caminhoURL.'br');
+        exit;
+    }elseif($_GET['lang'] == 'lib.templates'){
+        $_GET['lang'] = 'br';
+        $_SESSION['lang'] = 'br';
+        header("Location: ".Sistema::$caminhoURL.'br');
+        exit;
+    }elseif($_GET['lang'] == '500.shtml'){
+        $_GET['lang'] = 'br';
+        $_SESSION['lang'] = 'br';
+        header("Location: ".Sistema::$caminhoURL.'br');
+        exit;
+    }
+
+    $_SESSION['lang'] = $_GET['lang'];
+
 }elseif(empty($_GET['lang'])){
-		
-	header("Location: ".Sistema::$caminhoURL."br");
-	exit;
+
+    header("Location: ".Sistema::$caminhoURL."br");
+    exit;
 }
+
 
 $iT 		= new InterFaces(new Arquivos(Sistema::$layoutCaminhoDiretorio."index.html"));
 
@@ -164,7 +165,7 @@ if(empty($_SESSION['usuario'])){
     $lP->close();
 
 }
-	
+
 if(!empty($_POST['email-news'])){
 	
 	$lPM = new ListaPacoteMailings;
@@ -197,7 +198,7 @@ if($lT->getTotal() > 0){
 
 $lSC = new ListaSlideCategorias;
 $lSC->condicoes('', 1, ListaSlideCategorias::ID);
-if($lSC->getTotal() > 0 && empty($pagina)){
+if($lSC->getTotal() > 0){
 		
 	$sC = $lSC->listar();
 	
@@ -268,55 +269,6 @@ while($pM = $lPM->listar("DESC", "rand()")){
 }*/
 
 
-$pCP = new ProdutoCategoria;
-$iT->createRepeticao("repetir->ProdutoCategorias");
-$aPC[1] = array('campo' => ListaProdutoCategorias::DISPONIVEL, 'valor' => ListaProdutoCategorias::VALOR_DISPONIVEL_TRUE);
-$pCP->getSubCategorias()->condicoes($aPC);
-while($pC = $pCP->getSubCategorias()->listar("ASC", ListaProdutoCategorias::ORDEM)){
-
-	$iT->repetir();
-	
-	$bg = '';
-	
-	$iT->enterRepeticao()->trocar('bg.ProdutoCategoria', $bg);	
-	$iT->enterRepeticao()->trocar('id.ProdutoCategoria', $pC->getId());	
-	$iT->enterRepeticao()->trocar('nome.ProdutoCategoria', $idioma->getTraducaoByConteudo($pC->nome)->traducao);	
-	$iT->enterRepeticao()->trocar('url.ProdutoCategoria', $pC->getURL()->url);	
-	$iT->enterRepeticao()->trocar('linkVisualizar.ProdutoCategoria', Sistema::$caminhoURL.$_SESSION['lang'].'/produtos/'.$pC->getURL()->url);
-	
-	$iT->enterRepeticao()->condicao('condicao->SubCategorias.ProdutoCategoria', $pC->getSubCategorias()->getTotal() > 0);
-	$iT->enterRepeticao()->condicao('condicao->Background.ProdutoCategoria', !empty($bg));	
-	
-	$iT->enterRepeticao()->createRepeticao("repetir->ProdutoCategorias.ProdutoCategoria");
-	$pC->getSubCategorias()->condicoes($aPC);
-	while($sPC = $pC->getSubCategorias()->listar("ASC", ListaProdutoCategorias::ORDEM)){
-		
-		$iT->enterRepeticao()->repetir();
-		
-		$iT->enterRepeticao()->enterRepeticao()->trocar('id.ProdutoCategoria.ProdutoCategoria', $sPC->getId());	
-		$iT->enterRepeticao()->enterRepeticao()->trocar('nome.ProdutoCategoria.ProdutoCategoria', $idioma->getTraducaoByConteudo($sPC->nome)->traducao);	
-		$iT->enterRepeticao()->enterRepeticao()->trocar('linkVisualizar.ProdutoCategoria.ProdutoCategoria', Sistema::$caminhoURL.$_SESSION['lang'].'/produtos/'.$sPC->getURL()->url);
-		
-		$iT->enterRepeticao()->enterRepeticao()->condicao('condicao->SubCategorias.ProdutoCategoria.ProdutoCategoria', $sPC->getSubCategorias()->getTotal() > 0);
-		
-		$iT->enterRepeticao()->enterRepeticao()->createRepeticao("repetir->ProdutoCategorias.ProdutoCategoria.ProdutoCategoria");
-		$sPC->getSubCategorias()->condicoes($aPC);
-		/*while($eSPC = $sPC->getSubCategorias()->listar("ASC", ListaProdutoCategorias::ORDEM)){
-			
-			$iT->enterRepeticao()->enterRepeticao()->repetir();
-		
-			$iT->enterRepeticao()->enterRepeticao()->enterRepeticao()->trocar('id.ProdutoCategoria.ProdutoCategoria.ProdutoCategoria', $eSPC->getId());	
-			$iT->enterRepeticao()->enterRepeticao()->enterRepeticao()->trocar('nome.ProdutoCategoria.ProdutoCategoria.ProdutoCategoria', $idioma->getTraducaoByConteudo($eSPC->nome)->traducao);	
-			$iT->enterRepeticao()->enterRepeticao()->enterRepeticao()->trocar('linkVisualizar.ProdutoCategoria.ProdutoCategoria.ProdutoCategoria', Sistema::$caminhoURL.$_SESSION['lang'].'/produtos/'.$eSPC->getURL()->url);
-			
-		}*/
-		
-	}
-	
-}
-
-$pCP->getSubCategorias()->close();
-
 include('lateral-esquerda.php');
 $iT->trocar('lateralEsquerda', $lateralEsquerda);
 
@@ -337,13 +289,14 @@ if(!empty($pagina)){
 }else
 	$u = new URL;
 	
-/*
+
 unset($aR);
 $aR[1] = array('campo' => ListaProdutos::DISPONIVEL, 'valor' => ListaProdutos::VALOR_DISPONIVEL_TRUE);
 $aR[2] = array('campo' => ListaProdutos::LANCAMENTO, 'valor' => ListaProdutos::VALOR_DISPONIVEL_TRUE);
 $aR[3] = array('campo' => ListaProdutos::REMOVIDO, 'valor' => ListaProdutos::VALOR_DISPONIVEL_FALSE);
 $aR[4] = array('campo' => ListaProdutos::PRODUTOPAI, 'valor' => '');
 
+/*
 $lP = new ListaProdutos;
 $lP->condicoes($aR);
 
@@ -424,6 +377,11 @@ if($lP->getTotal() > 0){
 	
 }*/
 
+
+
+$total = 0;
+
+
 if(file_exists($pagina.'.php'))
 	include($pagina.'.php');
 elseif(file_exists($u->tabela.'.php'))
@@ -443,7 +401,7 @@ $iT->trocar('descricao', strip_tags(str_replace("\"", "", str_replace("\n", "", 
 
 $final = $iT->concluir();
 
-if(!isset($_GET['newsletter']) && !isset($_GET['indicar']) && $pagina != 'contato' && $pagina != 'favoritos' && $pagina != 'carrinho' && $pagina != 'finalizar-pedido' && $pagina != 'historico-pedido' && $pagina != 'dados-cadastrais' && $pagina != 'enviar-pedido' && $pagina != 'pedido' && $pagina != 'cadastro' && $pagina != 'esqueceu-sua-senha' && $pagina != 'login' && $_SESSION['lang'] == 'br'){
+/*if(!isset($_GET['newsletter']) && !isset($_GET['indicar']) && $pagina != 'contato' && $pagina != 'favoritos' && $pagina != 'carrinho' && $pagina != 'finalizar-pedido' && $pagina != 'historico-pedido' && $pagina != 'dados-cadastrais' && $pagina != 'enviar-pedido' && $pagina != 'pedido' && $pagina != 'cadastro' && $pagina != 'esqueceu-sua-senha' && $pagina != 'login' && $_SESSION['lang'] == 'br'){
 
 	$pasta = "lib.data/cache/";
 	
@@ -468,12 +426,12 @@ if(!isset($_GET['newsletter']) && !isset($_GET['indicar']) && $pagina != 'contat
 		@mkdir("lib.data/cache".$_SERVER['REQUEST_URI'], 0777);
 		$pasta = "lib.data/cache".$_SERVER['REQUEST_URI']."/";
 	}
-	
+
 	$f = @fopen($pasta."index.html", 'w+');
 	@fwrite($f, $final);
 	@fclose($f);
 
-}
+}*/
 
 echo $final;
 

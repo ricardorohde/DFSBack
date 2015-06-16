@@ -353,7 +353,7 @@ $iTDT->condicao("condicao->Imagens", true);
 if($p->getImagens()->getTotal() > 0){
 
 	$img = $p->getImagens()->listar("DESC", ListaImagens::DESTAQUE);
-	$iTDT->trocar('imagem', $img->getImage()->showHTML(372, 272));
+	$iTDT->trocar('imagem', $img->getImage()->pathImage(500, 500));
 	$iTDT->trocar('url.Imagem', $img->getImage()->pathImage(1200, 800));
 
 	//metatag
@@ -367,7 +367,7 @@ if($p->getImagens()->getTotal() > 0){
 		$iTDT->enterRepeticao()->trocar('posicao.Imagem', $p->getImagens()->getParametros());
 		$iTDT->enterRepeticao()->trocar('url.Imagem', $img->getImage()->pathImage(1200, 800));
 		$iTDT->enterRepeticao()->trocar('url.medium.Imagem', $img->getImage()->pathImage(350, 272));
-		$iTDT->enterRepeticao()->trocar('url.thumb.Imagem', $img->getImage()->pathImage(54, 54));
+		$iTDT->enterRepeticao()->trocar('url.thumb.Imagem', $img->getImage()->pathImage(150, 120));
 
 	}
 

@@ -3,15 +3,15 @@
 class Sistema {
 	
 	public static $BDHost 							= 'localhost';
-	public static $BDBanco							= 'pioneeri_v3';
-	public static $BDUsuario						= 'pioneeri_info'; //onoteatrouser
-	public static $BDSenha 							= 'hyzU3!9TO'; //#8/wkVTFx=
+	public static $BDBanco							= 'jnt_dfs';
+	public static $BDUsuario						= 'root'; //onoteatrouser
+	public static $BDSenha 							= ''; //#8/wkVTFx=
 	public static $BDPrefixo						= 'tta_';
 	
 	public static $caminhoDiretorio					= '/';
 	public static $caminhoURL		 				= '/';
 	
-	public static $layoutTemplate					= 'v3';
+	public static $layoutTemplate					= 'v1';
 	public static $layoutCaminhoDiretorio			= '';
 	public static $layoutCaminhoURL					= '';
 	
@@ -22,9 +22,9 @@ class Sistema {
 	public static $adminLayoutCaminhoDiretorio		= '';
 	public static $adminLayoutCaminhoURL			= '';
 	
-	public static $nomeEmpresa 						= 'Pioneer Internacional';
-	public static $dominioEmpresa					= 'www.pioneerinter.com';
-	public static $emailEmpresa 					= 'sac@pioneerinter.com';
+	public static $nomeEmpresa 						= 'DFS International';
+	public static $dominioEmpresa					= 'dev.dfs.com.py';
+	public static $emailEmpresa 					= 'contato@dfs.com.py';
 	public static $sistemaVersao					= 'Versão Beta 2.0';
 	
 	public static $emailsPorHora					= 9999;
@@ -34,7 +34,7 @@ class Sistema {
 	public static $caminhoDataProdutoCategorias		= 'produtos/categorias/';
 	public static $caminhoDataProdutoMarcas			= 'produtos/marcas/';
 	public static $caminhoDataProdutoOpcoes			= 'produtos/opcoes/';
-	public static $caminhoDataProdutos				= 'fotos/';
+	public static $caminhoDataProdutos				= 'lib.data/produtos/';
 	public static $caminhoDataOfertasColetivas		= 'ofertascoletivas/';
 	public static $caminhoDataTextos				= 'geral/textos/';
 	public static $caminhoDataUsuarios				= 'geral/usuarios/';

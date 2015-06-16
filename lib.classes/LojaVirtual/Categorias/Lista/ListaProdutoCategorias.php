@@ -22,13 +22,11 @@ class ListaProdutoCategorias extends Lista {
 	const VALOR_VISAOUNICA_FALSE 	= 0;
 	
 	public function __construct(){
-		
 		parent::__construct('produtos_categorias');
-		
 	}
 	
 	public function listar($ordem = "ASC", $campo = self::ID){
-		
+
 		$info = parent::listar($ordem, $campo);
 		
 		if(!empty($info)){ 	
