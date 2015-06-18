@@ -73,6 +73,7 @@ while($p = $lP->listar()) {
 }
 
 $pCP->close();
+$lP->close();
 
 ksort($produtos);
 $iTM->createRepeticao('repetir->PrincipaisProdutos');
@@ -88,8 +89,62 @@ foreach($produtos as $prd) {
     $iTM->enterRepeticao()->trocar('PrincipaisProdutos.Produto.URL',$prd['url']);
 }
 
-//include('lateral-direita.php');
-//$iTM->trocar('lateralDireita', $lateralDireita);
+# Lista as Marcas
+$lM = new ListaProdutoMarcas();
+$cond[1] = array('campo' => ListaProdutoMarcas::DISPONIVEL, 'valor' => ListaProdutoMarcas::VALOR_DISPONIVEL_TRUE);
+$lM->condicoes($cond);unset($cond);
+$lM->setParametros(15,'limite');
+
+$iTM->condicao('condicao->Marcas', $lM->getTotal() > 0);
+$iTM->createRepeticao('repetir->Marcas');
+while($m = $lM->listar()) {
+    $iTM->repetir();
+
+    $iTM->enterRepeticao()->trocar('Marcas.Nome', $m->nome);
+    $iTM->enterRepeticao()->trocar('Marcas.Imagem', $m->getImagem()->pathImage(100,100));
+    $iTM->enterRepeticao()->trocar('Marcas.URL', Sistema::$caminhoURL.$_SESSION['lang']."/produtos/&marca=".$m->getURL()->url);
+}
+
+# Lista os Produtos Mais Visualizados
+$lPMV = new ListaProdutos();
+$cond[1] = array('campo' => ListaProdutos::DISPONIVEL, 'valor' =>ListaProdutos::VALOR_DISPONIVEL_TRUE);
+$lPMV->condicoes($cond);unset($cond);
+$lPMV->setParametros(15,'limite');
+
+$iTM->condicao('condicao->ProdutosMaisVisualizados', $lPMV->getTotal() > 0);
+$iTM->createRepeticao('repetir->ProdutosMaisVisualizados');
+while($pmv = $lPMV->listar('DESC',ListaProdutos::VIEW)) {
+    if($pmv->getCategorias()->getTotal() > 0) {
+        $iTM->repetir();
+
+        $iTM->enterRepeticao()->trocar('ProdutosMV.Nome', $idioma->getTraducaoByConteudo($pmv->nome)->traducao);
+        $iTM->enterRepeticao()->trocar('ProdutosMV.URL', Sistema::$caminhoURL . $_SESSION['lang'] . "/produtos/" . $pmv->getCategorias()->listar()->getURL()->url . "/" . $pmv->getURL()->url);
+        $iTM->enterRepeticao()->trocar('ProdutosMV.Imagem', $pmv->getImagens()->listar("DESC", ListaImagens::DESTAQUE)->getImage()->pathImage(150,150));
+    }
+}
+$lPMV->close();
+
+# lista os Produtos em Ofertas
+$lPO = new ListaProdutos();
+$cond[1] = array('campo' => ListaProdutos::VALORVENDA, 'valor' => 0, 'operador' => '>');
+$cond[2] = array('campo' => ListaProdutos::DISPONIVEL, 'valor' => ListaProdutos::VALOR_PROMOCAO_TRUE);
+$lPO->condicoes($cond);unset($cond);
+
+$iTM->condicao('condicao->Produtos.Oferta', $lPO->getTotal() > 0);
+$iTM->createRepeticao('repetir->Produtos.Oferta');
+while($po = $lPO->listar('DESC',ListaProdutos::ID)) {
+    if($po->getCategorias()->getTotal() > 0) {
+        $iTM->repetir();
+
+        $iTM->enterRepeticao()->trocar('Produtos.Ofertas.Nome', $idioma->getTraducaoByConteudo($po->nome)->traducao);
+        $iTM->enterRepeticao()->trocar('Produtos.Ofertas.URL', Sistema::$caminhoURL . $_SESSION['lang'] . "/produtos/" . $po->getCategorias()->listar()->getURL()->url . "/" . $po->getURL()->url);
+        $iTM->enterRepeticao()->trocar('Produtos.Ofertas.Imagem', $po->getImagens()->listar("DESC", ListaImagens::DESTAQUE)->getImage()->pathImage(120,120));
+
+        $iTM->enterRepeticao()->trocar('Produtos.Ofertas.Valor',  "U$ ".$po->valorReal->moeda());
+        $iTM->enterRepeticao()->trocar('Produtos.Ofertas.ValorPromocional',  "U$ ".$po->valorVenda->moeda());
+    }
+}
+
 
 $javaScript .= $iTM->createJavaScript()->concluir();
 

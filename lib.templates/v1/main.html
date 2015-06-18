@@ -255,32 +255,14 @@
         <div class="arrow-bottom visible-sm visible-xs c2"></div>
     </div>
     <div class="section-middle pull-left bg7">
-        <ul class="list-unstyled list-inline">
-            <li class="hidden-md">
-                <a href="#">
-                    <img src="images/marcas/e704ba3a.01.jpg" height="40px" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="images/marcas/2bbc635c.02.png" height="40px" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="images/marcas/716ab09a.03.png" height="40px" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="images/marcas/193585fb.04.png" height="40px" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="images/marcas/707f3c8c.05.png" height="40px" />
-                </a>
-            </li>
+        <ul id="MarcasCarousel" class="owl-carousel list-unstyled list-inline">
+            {repetir->Marcas}
+                <li>
+                    <a href="{Marcas.URL}">
+                        <img src="{Marcas.Imagem}" />
+                    </a>
+                </li>
+            {repetir->Marcas}
         </ul>
     </div>
     <div class="section-select pull-left bg8">
@@ -288,8 +270,10 @@
             Selecionar
         </div>
         <div class="baloon text-center bg5 c4 f20 font2">
-            Marcas<br />
-            Exclusivas
+            <a href="/{lang}/marcas" class="c4">
+                Marcas<br />
+                Exclusivas
+            </a>
             <div class="arrow-bottom c3"></div>
         </div>
     </div>
@@ -306,32 +290,14 @@
         <div class="arrow-bottom visible-sm visible-xs c2"></div>
     </div>
     <div class="section-middle pull-left">
-        <ul class="list-unstyled list-inline">
-            <li class="hidden-md">
-                <a href="#">
-                    <img src="images/produtos/3e0f89e4.01.png" height="95px" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="images/produtos/7da2b19a.02.png" height="95px" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="images/produtos/f96eb6c3.03.png" height="95px" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="images/produtos/555c9f8f.04.png" height="95px" />
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="images/produtos/8a0f0285.05.png" height="95px" />
-                </a>
-            </li>
+        <ul id="ProdutosMVCarousel" class="list-unstyled list-inline">
+            {repetir->ProdutosMaisVisualizados}
+                <li>
+                    <a href="{ProdutosMV.URL}" title="{ProdutosMV.nome}">
+                        <img src="{ProdutosMV.Imagem}" height="95px" />
+                    </a>
+                </li>
+            {repetir->ProdutosMaisVisualizados}
         </ul>
     </div>
     <div class="section-select pull-left bg8">
@@ -339,9 +305,11 @@
             Selecionar
         </div>
         <div class="baloon text-center bg5 c4 f20 font2">
-            Todos os<br />
-            Produtos
-            <div class="arrow-bottom c3"></div>
+            <a href="/{lang}/produtos" class="c4">
+                Todos os<br />
+                Produtos
+            </a>
+                <div class="arrow-bottom c3"></div>
         </div>
     </div>
     <div class="clearfix"></div>
@@ -358,78 +326,30 @@
         <div class="arrow-bottom visible-sm visible-xs c2"></div>
     </div>
     <div class="section-middle pull-left">
-        <ul class="list-unstyled list-inline">
-            <li class="hidden-md">
-                <a href="#">
-                    <div class="thumb">
-                        <img src="images/produtos/10ab0606.01_01.png" height="100px" class="img-responsive" />
-                    </div>
-                    <div class="title f10 bold c0 font1">
-                        AMPLIFICADOR BUSTER BB-1600 1600W
-                    </div>
-                    <div class="price c3">
-                        U$ 65,00
-                    </div>
-                </a>
-            </li>
+        <ul id="ProdutosOfertasCarousel" class="owl-carousel list-unstyled list-inline">
+            {repetir->Produtos.Oferta}
             <li>
-                <a href="#">
+                <a href="{Produtos.Ofertas.URL}">
                     <div class="thumb">
-                        <img src="images/produtos/10ab0606.01_01.png" height="100px" class="img-responsive" />
+                        <img src="{Produtos.Ofertas.Imagem}" height="100px" class="img-responsive" />
                     </div>
                     <div class="title f10 bold c0 font1">
-                        AMPLIFICADOR BUSTER BB-1600 1600W
+                        {Produtos.Ofertas.Nome}
                     </div>
                     <div class="price c3">
-                        U$ 65,00
+                        {Produtos.Ofertas.Valor}
                     </div>
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    <div class="thumb">
-                        <img src="images/produtos/10ab0606.01_01.png" height="100px" class="img-responsive" />
-                    </div>
-                    <div class="title f10 bold c0 font1">
-                        AMPLIFICADOR BUSTER BB-1600 1600W
-                    </div>
-                    <div class="price c3">
-                        U$ 65,00
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <div class="thumb">
-                        <img src="images/produtos/10ab0606.01_01.png" height="100px" class="img-responsive" />
-                    </div>
-                    <div class="title f10 bold c0 font1">
-                        AMPLIFICADOR BUSTER BB-1600 1600W
-                    </div>
-                    <div class="price c3">
-                        U$ 65,00
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <div class="thumb">
-                        <img src="images/produtos/10ab0606.01_01.png" height="100px" class="img-responsive" />
-                    </div>
-                    <div class="title f10 bold c0 font1">
-                        AMPLIFICADOR BUSTER BB-1600 1600W
-                    </div>
-                    <div class="price c3">
-                        U$ 65,00
-                    </div>
-                </a>
-            </li>
+            {repetir->Produtos.Oferta}
         </ul>
     </div>
     <div class="section-select pull-left bg8">
         <div class="baloon text-center bg5 c4 f20 font2">
-            Selecionar<br />
-            Oferta
+            <a href="/{lang}/ofertas" class="c4">
+                Selecionar<br />
+                Oferta
+            </a>
             <div class="arrow-bottom c3"></div>
         </div>
         <div class="mgt20 font2 c5 f20 bold text-center">

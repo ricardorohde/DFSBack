@@ -52,7 +52,8 @@ class Produto extends Objeto {
 	public		$tipoUnidade;
 	public		$quantidadeu;
 	public		$frete;
-	public		$tipoPedido;
+    public		$tipoPedido;
+    public		$view;
 	
 	public function __construct($id = ''){
 		
@@ -84,7 +85,8 @@ class Produto extends Objeto {
 		$this->video			= '';
 		$this->marca			= new ProdutoMarca;
 		$this->frete			= 0;
-		$this->tipoPedido		= 0;
+        $this->tipoPedido		= 0;
+        $this->view		        = 0;
 		
 		$this->configCategorias(false);
 		
@@ -292,7 +294,8 @@ class Produto extends Objeto {
 			$this->quantidadeu		= $p->quantidadeu;
 			//$this->estoque			= $p->estoque;
 			$this->codigo			= $p->codigo;
-			$this->frete			= $p->frete;
+            $this->frete			= $p->frete;
+            $this->view			    = $p->view;
 			
 			$this->setVideo($p->getVideo());
 			$this->setMarca($p->getMarca());
