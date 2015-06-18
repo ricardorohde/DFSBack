@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'Gill Sans';
+    src: url('/lib.templates/v1/fonts/Gill_Sans/33535gillsansmt.eot');
+    src: local('Gill Sans MT Regular'), url('/lib.templates/v1/fonts/Gill_Sans/33535gillsansmt.woff') format('woff'), url('/lib.templates/v1/fonts/Gill_Sans/33535gillsansmt.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Gill Sans Light';
+    src: url('/lib.templates/v1/fonts/Gill_Sans/gillsans_light.eot');
+    src: local('GillSans Light Regular'), url('/lib.templates/v1/fonts/Gill_Sans/gillsans_light.woff') format('woff'), url('/lib.templates/v1/fonts/Gill_Sans/gillsans_light.ttf') format('truetype');
+}
+/* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_1416">Text with this font applied</p> */
+.font1 {font-family: 'Gill Sans' !important;}
+.font2 {font-family: 'Gill Sans light' !important;}
+
+/* Font downloaded from FontsForWeb.com */

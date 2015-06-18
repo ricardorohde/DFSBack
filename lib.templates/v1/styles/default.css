@@ -1,0 +1,97 @@
+/**
+ * Created by Marcelo Rafael.
+ * User: marcelo
+ * Date: 04/06/15
+ * Time: 14:05
+ */
+
+body{font-family: "Gill Sans", sans-serif;font-size:12px; min-width: 360px;}
+
+*{outline: 0px!important;}
+
+input:active,input:focus{box-shadow: none;}
+
+.inline{display: inline-block;}
+.block {display: block;}
+.relative{position: relative;}
+
+.full-w{width:100%;}
+.full-h{height:100%;}
+
+/** Link **/
+a {text-decoration: none;}
+
+/** Colours **/
+.c0 {color: #000000;}
+.c1 {color: #9fa0a2;}
+.c2 {color: #07113d;}
+.c3 {color: #d81f33;}
+.c4 {color: #FFFFFF;}
+.c5 {color: #53575a;}
+
+/** Font Size **/
+.f10 {font-size: 10px;}
+.f14 {font-size: 14px;}
+.f16 {font-size: 16px;}
+.f18 {font-size: 18px;}
+.f20 {font-size: 20px;}
+.f24 {font-size: 24px;}
+.f26 {font-size: 26px;}
+.f32 {font-size: 32px;}
+.f40 {font-size: 40px;}
+.f48 {font-size: 48px;}
+
+/** Weight **/
+.light {font-weight: 100;}
+.bold {font-weight: bold;}
+
+/** Link Colours Hover **/
+a.c0:hover {color:#666666;}
+
+/** Backgrounds **/
+.bg0 {background-color: #050708 ;}
+.bg1 {background-image: url('../images/bg-banner_menor.jpg'); background-repeat:repeat-x;}
+.bg2 {background-color: #000030;}
+.bg3 {background-color: #444349 !important;}
+.bg4 {background-color: #000030;}
+.bg5 {background-color: #012561;}
+.bg6 {background-color: #818286;}
+.bg7 {background-color: #d2d3d5;}
+.bg8 {background-color: #e6e7e9;}
+.bg9 {background: url(../images/bg_slogan_leve.jpg) top center;background-size: cover}
+.bg10 {background-color: #670001;}
+.bg11 {background-color: #d61f31;}
+
+/** HR's **/
+hr.hr1 {border-top-color: #58595b;}
+hr.hr2 {margin-top:0px; width: 150px;border-width: 10px;}
+hr.c1 {border-color: #6d6e70;}
+hr.c3 {border-color: #660001;}
+hr.c4 {border-color: #FFFFFF;}
+
+/** Line Height **/
+.lh0 {line-height: 0px;}
+.lh12 {line-height: 12px;}
+.lh30 {
+    line-height: 30px;
+}
+.lh40 {line-height: 40px;}
+
+/** Arrows **/
+[class*="arrow-"]{
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent transparent transparent transparent;
+}
+.arrow-right {border-width: 6px 0px 6px 7px;}
+.arrow-bottom {border-width: 6px 6px 0px 7px;}
+
+.arrow-right.c1 {border-color: transparent transparent transparent #ec1824;}
+.arrow-right.c2 {border-color: transparent transparent transparent #818286;}
+.arrow-bottom.c2 {border-color: #818286 transparent transparent transparent;}
+.arrow-bottom.c3 {border-color: #012561 transparent transparent transparent;}
+
+
+button.transparent {background:none;border:0px;}

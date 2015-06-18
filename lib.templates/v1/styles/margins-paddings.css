@@ -1,0 +1,74 @@
+/**
+ * Created by Marcelo Rafael.
+ * User: marcelo
+ * Date: 22/05/15
+ * Time: 21:25
+ */
+
+/*******************
+    Margin
+*******************/
+
+/* Geral */
+.mg0 {margin: 0px;}
+
+/* Top */
+.mgt0 {margin-top: 0px;}
+.mgt5 {margin-top: 5px;}
+.mgt7 {margin-top: 7px;}
+.mgt10 {margin-top: 10px;}
+.mgt20 {margin-top: 20px;}
+.mgt30 {margin-top: 30px;}
+.mgt40 {margin-top: 40px;}
+.mgt50 {margin-top: 50px;}
+.mgt80 {margin-top: 80px;}
+.mgt100 {margin-top: 100px;}
+
+/* Right */
+.mgr0 {margin-right: 0px;}
+.mgr10 {margin-right: 10px;}
+.mgr20 {margin-right: 20px;}
+
+/* Bottom */
+.mgb0 {margin-bottom: 0px;}
+.mgb10 {margin-bottom: 10px;}
+.mgb20 {margin-bottom: 20px;}
+.mgb40 {margin-bottom: 40px;}
+.mgb100 {margin-bottom: 100px;}
+
+/* Left */
+.mgl0 {margin-left: 0px;}
+.mgl8 {margin-left: 5px;}
+.mgl10 {margin-left: 10px;}
+
+
+/******************
+    Padding
+*******************/
+
+/* Geral */
+.pd0 {padding: 0px;}
+.pd5 {padding: 5px;}
+.pd10 {padding: 10px;}
+
+/* Top */
+.pdt2 {padding-top: 2px;}
+.pdt4 {padding-top: 4px;}
+.pdt5 {padding-top: 5px;}
+.pdt10 {padding-top: 10px;}
+.pdt15 {padding-top: 15px;}
+.pdt20 {padding-top: 20px;}
+
+/* Right */
+
+/* Bottom */
+.pdb2 {padding-bottom: 2px;}
+.pdb4 {padding-bottom: 4px;}
+.pdb5 {padding-bottom: 5px;}
+.pdb15 {padding-bottom: 15px;}
+.pdb20 {padding-bottom: 20px;}
+.pdb40 {padding-bottom: 40px;}
+
+/* Left */
+.pdl0 {padding-left:0px;}
+.pdl10 {padding-left:10px;}

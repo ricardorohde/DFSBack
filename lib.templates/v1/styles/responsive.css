@@ -1,0 +1,269 @@
+/**
+ * Created by Marcelo Rafael.
+ * User: marcelo
+ * Date: 04/06/15
+ * Time: 14:27
+ */
+
+@media (max-width:767px) {
+    .text-xs-left {
+        text-align: left;
+    }
+    .text-xs-center {
+        text-align: center;
+    }
+    .text-xs-right {
+        text-align: right;
+    }
+    #Banner .banner .elemento-01 {
+        width: 269px;
+    }
+    #Banner .banner h3 {
+        font-size: 14px;
+    }
+    #Menu ul li{
+        width: 100%;
+        margin-top: 0px;
+    }
+    #Menu ul li a {
+        border-top: 1px solid #CFCFCF;
+        border-left: 1px solid #cfcfcf;
+    }
+    #Menu ul li .effect-top-line {
+        display: none;
+    }
+
+
+    #MenuProdutosPrincipais ul li a,
+    #MenuProdutosPrincipais ul li{
+        width: 100%;
+    }
+    #MenuProdutosPrincipais ul li a{
+        border-right-width: 1px !important;
+        border-right-style: solid !important;
+        border-bottom: 0px !important;
+    }
+    #MenuProdutosPrincipais ul li:last-child a{
+        border-bottom-width: 1px !important;
+        border-bottom-style: solid !important;
+    }
+
+
+    #PrincipaisProdutos article .grid-item{
+        text-align: center;
+        display: inline-block;
+        float: none !important;
+        width: 100% !important;
+    }
+    #PrincipaisProdutos article .grid-item img{
+        width: auto !important;
+    }
+
+
+    #PrecosImbativeis .section-title {
+        width: 100%;
+        padding: 10px 0;
+        height: auto;
+        text-align: center;
+    }
+    #PrecosImbativeis .section-title img {
+        display: inline-block;
+    }
+    #PrecosImbativeis .section-title h1 {
+        margin-top: 10px;
+    }
+    #PrecosImbativeis .section-middle {
+        width: 100%;
+        height: auto;
+        text-align: center;
+        border-left: 2px solid #edefee;
+        border-right: 2px solid #edefee;
+    }
+    #PrecosImbativeis .section-middle ul.list-inline li {
+        display: block;
+        width: 100% !important;
+        text-align: center;
+    }
+    #PrecosImbativeis .section-middle ul.list-inline li img{
+        display: inline-block;
+    }
+    #PrecosImbativeis .section-middle ul li a{
+        display: block;
+        padding: 20px 0;
+    }
+    #PrecosImbativeis .section-select {
+        width: 100%;
+    }
+
+    #SlideFooter .image {
+        width: 100%;
+        text-align: center;
+    }
+    #SlideFooter .image img{
+        width: 250px;
+        display: inline-block;
+    }
+    #SlideFooter .description {
+        width: 100%;
+        text-align: center;
+    }
+}
+@media (min-width:768px) and (max-width: 991px) {
+    .text-sm-left {
+        text-align: left;
+    }
+    .text-sm-center {
+        text-align: center;
+    }
+    .text-sm-right {
+        text-align: right;
+    }
+    #Menu ul li a{
+        padding: 30px 13px 23px;
+    }
+    #Menu ul li.search a{
+        font-size: 38px;
+        padding: 15px 15px 0px;
+    }
+    #Menu ul li{
+        width: 100%;
+        margin-top: 0px;
+    }
+    #Menu ul li a {
+        border-top: 1px solid #CFCFCF;
+        border-left: 1px solid #cfcfcf;
+    }
+    #Menu ul li .effect-top-line {
+        display: none;
+    }
+
+
+
+    #MenuProdutosPrincipais ul li a,
+    #MenuProdutosPrincipais ul li{
+        width: 100%;
+    }
+    #MenuProdutosPrincipais ul li a{
+        border-right-width: 1px !important;
+        border-right-style: solid !important;
+        border-bottom: 0px !important;
+    }
+    #MenuProdutosPrincipais ul li:last-child a{
+        border-bottom-width: 1px !important;
+        border-bottom-style: solid !important;
+    }
+
+
+    #PrincipaisProdutos article .grid-item {
+        width: 165px;
+        height: 124px;
+    }
+    #PrincipaisProdutos article .grid-item--width2{
+        width: 350px;
+    }
+
+
+    #PrecosImbativeis .section-title {
+        width: 100%;
+        padding: 10px 0;
+        height: auto;
+        text-align: center;
+    }
+    #PrecosImbativeis .section-title img {
+        display: inline-block;
+    }
+    #PrecosImbativeis .section-title h1 {
+        margin-top: 10px;
+    }
+    #PrecosImbativeis .section-middle {
+        width: 100%;
+        height: auto;
+        text-align: center;
+        border-left: 2px solid #edefee;
+        border-right: 2px solid #edefee;
+    }
+    #PrecosImbativeis .section-middle ul.list-inline li {
+        display: block;
+        width: 100% !important;
+        text-align: center;
+    }
+    #PrecosImbativeis .section-middle ul.list-inline li img{
+        display: inline-block;
+    }
+    #PrecosImbativeis .section-middle ul li a{
+        display: block;
+        padding: 20px 0;
+    }
+    #PrecosImbativeis .section-select {
+        width: 100%;
+    }
+
+
+    #SlideFooter .image {
+        width: 100%;
+        text-align: center;
+    }
+    #SlideFooter .image img{
+        width: 250px;
+        display: inline-block;
+    }
+    #SlideFooter .description {
+        width: 100%;
+        text-align: center;
+    }
+}
+@media (min-width:992px) and (max-width: 1199px) {
+    .text-sm-left {
+        text-align: left;
+    }
+    .text-md-center {
+        text-align: center;
+    }
+    .text-md-right {
+        text-align: right;
+    }
+    #Menu ul li a{
+        padding: 30px 28px 23px;
+    }
+    #Menu ul li.search a{
+        font-size: 38px;
+        padding: 16px 20px 0px;
+    }
+    #Menu .collapse {
+        display: block;
+        height: auto !important;
+    }
+
+    #MenuProdutosPrincipais ul li a{
+        padding: 8px 44px !important;
+    }
+
+    #PrincipaisProdutos article .grid-item {
+        width: 220px;
+    }
+    #PrincipaisProdutos article .grid-item--width2{
+        width: 460px;
+    }
+
+    #PrecosImbativeis .section-title {
+        width: 186px;
+    }
+    #PrecosImbativeis .section-middle {
+        width: 620px;
+    }
+}
+@media (min-width:1200px) {
+    .text-lg-left {
+        text-align: left;
+    }
+    .text-lg-center {
+        text-align: center;
+    }
+    .text-lg-right {
+        text-align: right;
+    }
+    #Menu .collapse {
+        display: block;
+        height: auto !important;
+    }
+}

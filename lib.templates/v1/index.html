@@ -1,0 +1,240 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <title>DFS</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="shortcut icon" href="/4b1b4a49.favicon.ico">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="styles/fonts.css">
+        <link rel="stylesheet" href="styles/default.css">
+        <link rel="stylesheet" href="styles/b5495e1f.vendor.css">
+        <link rel="stylesheet" href="styles/5d68fe46.main.css">
+        <link rel="stylesheet" href="styles/margins-paddings.css">
+        <link rel="stylesheet" href="styles/responsive.css">
+
+        <!-- plugins -->
+        <link rel="stylesheet" href="{caminhoURL}lib.js/jQuery/css/owl-carousel/owl.carousel.css" />
+        <link rel="stylesheet" href="{caminhoURL}lib.js/jQuery/css/owl-carousel/owl.theme.css" />
+        <link rel="stylesheet" href="{caminhoURL}lib.js/jQuery/css/owl-carousel/owl.transitions.css" />
+        <!-- /plugins -->
+
+    </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+
+    <div id="wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- Topo -->
+                    <div id="Topo">
+                        <div class="container">
+                            <div class="row contato pdt15 pdb15">
+                                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 text-xs-center text-sm-left pdt5 pdb5">
+                                    <ul class="email list-unstyled inline mg0 mgr20 pd0">
+                                        <li class="pull-left">
+                                            <span class="glyphicon glyphicon-envelope c3"></span>
+                                            <a href="mailto:contact@dfs.com.py" class="c0">
+                                                contact@dfs.com.py
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <ul class="telefones mg0 pd0">
+                                        <li>
+                                            <span class="glyphicon glyphicon-earphone c3"></span>
+                                            <a href="tel:554599998989" class="c0">
+                                                +55(45) 9999-8989
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="tel:59561504590" class="c0">
+                                                +595(61) 504.590
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 text-xs-center text-sm-right text-md-right text-lg-right">
+                                    <ul class="redes-sociais list-inline pd0 mg0">
+                                        <li><a href="#"><img src="images/762acc36.icon-facebook.jpg" width="32px" /></a></li>
+                                        <li><a href="#"><img src="images/d986b542.icon-gplus.jpg" width="32px" /></a></li>
+                                        <li><a href="#"><img src="images/0a7adc80.icon-twitter.jpg" width="32px" /></a></li>
+                                        <li><a href="#"><img src="images/31525783.icon-basquete.jpg" width="32px" /></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 text-center">
+                                    <a href="/">
+                                        <img src="images/16460b74.topo.jpg" width="350" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- / Topo -->
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Banner -->
+        {condicao->Slides}
+            <div id="Banner" class="relative">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="bg1">
+                            <div class="col-xs-12">
+                                <div id="TopoCarousel" class="banner owl-carousel">
+                                    {repetir->Slides}
+                                    <div class="items">
+                                        <div class="item text-center">
+                                            {imagem.Slide}
+                                        </div>
+                                    </div>
+                                    <div class="items">
+                                        <div class="item text-center">
+                                            {imagem.Slide}
+                                        </div>
+                                    </div>
+                                    {repetir->Slides}
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="line-bottom-banner"></div>
+            <!-- /Banner -->
+
+            <!-- Space Tax Free  -->
+            <div id="Space" class="bg2">
+                <div class="container text-right">
+                    <div class="tax_free">
+                        <img src="images/180b354f.tax_free_paraguai.png" />
+                    </div>
+                </div>
+            </div>
+            <!-- /Space Tax Free -->
+        {condicao->Slides}
+
+        <!-- Menu -->
+        <div id="Menu" class="mgb10">
+            <div class="bdt1 mgt5">
+                <div class="container">
+                    <nav class="text-center">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#MenuCollapse"  aria-expanded="false" aria-controls="MenuCollapse" class="collapse-menu f40 hidden-lg hidden-md">
+                            <span class="glyphicon glyphicon-menu-hamburger"></span>
+                        </a>
+                        <div class="collapse" id="MenuCollapse">
+                            <ul class="list-unstyled list-inline mgb0">
+                                <li>
+                                    <div class="effect-top-line"></div>
+                                    <a href="#" class="c0">
+                                            HOME
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="effect-top-line"></div>
+                                    <a href="#" class="c0">
+                                            ABOUT
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="effect-top-line"></div>
+                                    <a href="#" class="c0">
+                                            COLLECTIONS
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="effect-top-line"></div>
+                                    <a href="#" class="c0">
+                                            BRANDS
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="effect-top-line"></div>
+                                    <a href="#" class="c0">
+                                            PHOTOS GALERY
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="effect-top-line"></div>
+                                    <a href="#" class="c0">
+                                            DEPARTAMENTS
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="effect-top-line"></div>
+                                    <a href="#" class="c0">
+                                        CONTACT
+                                    </a>
+                                </li>
+                                <li class="search bg3">
+                                    <div class="effect-top-line"></div>
+                                    <a class="c4">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- /Menu -->
+
+        {includePagina}
+
+        <div id="footer" class="bg11">
+            <footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <div class="bold f12 c4 text-xs-center text-sm-center text-md-left text-lg-left">
+                                © Texto qualquer aqui
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                            <ul class="list-inline list-unstyled text-center">
+                                <li><a href="#" class="c4">Home</a></li>
+                                <li><a href="#" class="c4">About</a></li>
+                                <li><a href="#" class="c4">Portifolio</a></li>
+                                <li><a href="#" class="c4">Service</a></li>
+                                <li><a href="#" class="c4">Facts</a></li>
+                                <li><a href="#" class="c4">Family</a></li>
+                                <li><a href="#" class="c4">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+    <script src="scripts/d3e31af9.vendor.js"></script>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+
+        <script src="scripts/49d9d00c.plugins.js"></script>
+
+        <!-- Plugins -->
+        <script src="{caminhoURL}lib.js/jQuery/js/owl-carousel/owl.carousel.min.js"></script>
+        <!-- /Plugins -->
+
+        <script src="scripts/d41d8cd9.main.js"></script>
+</body>
+</html>

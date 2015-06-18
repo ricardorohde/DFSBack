@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-xs-12">
+        {condicao->CategoriaSelecionada}
+            {condicao->CategoriaSelecionadaPai}
+                <ul id="CategoriaSelecionada" class="list-unstyled lateral-esquerda-categorias">
+                    <li>
+                        <h3 class="font2">{nome.CategoriaSelecionada}</h3>
+                        <ul class="list-unstyled pdl10 f14">
+                            {repetir->CategoriaSelecionada.SubCategorias}
+                                <li>
+                                    <a href="{linkVisualizar.ProdutoCategoriaSelecionada}">{nome.ProdutoCategoriaSelecionada}</a>
+                                </li>
+                            {repetir->CategoriaSelecionada.SubCategorias}
+                        </ul>
+                    </li>
+                </ul>
+            {condicao->CategoriaSelecionadaPai}
+        {condicao->CategoriaSelecionada}
+        <ul id="CategoriasLateralEsquerda" class="list-unstyled lateral-esquerda-categorias">
+            <li>
+                <h3 class="font2">Categorias</h3>
+                <ul class="list-unstyled pdl10 f14">
+                    {repetir->ProdutoCategorias}
+                        <li>
+                            <a href="{linkVisualizar.ProdutoCategoria}">
+                                {nome.ProdutoCategoria}
+                            </a>
+                        </li>
+                    {repetir->ProdutoCategorias}
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

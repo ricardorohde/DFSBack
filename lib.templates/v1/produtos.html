@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="font2">{titulo}</h1>
+            <hr />
+        </div>
+    </div>
+    <div id="ListagemProdutos" class="row">
+        <div class="col-xs-12 col-sm-3">
+            {lateralEsquerda}
+        </div>
+
+        {condicao->Produtos}
+            <div class="col-xs-12 col-sm-9">
+                <div class="row thumbnails">
+                    {repetir->Produtos}
+                        <div class="col-xs-12 col-sm-6 col-sm-4 col-lg-4 produto mgb20">
+                            <div class="thumbnail">
+                                <a href="{linkVisualizar.Produto}" class="imagem" style="background-image: url('{url.Imagem.Produto}')">
+
+                                </a>
+                            </div>
+                            <div class="caption">
+                                <h4 class="font2"><a href="{linkVisualizar.Produto}">{nome.Produto}</a></h4>
+                            </div>
+                        </div>
+                        {condicao->BreakLine}
+                            </div>
+                            <div class="row thumbnails">
+                        {condicao->BreakLine}
+                    {repetir->Produtos}
+                </div>
+            </div>
+
+            {condicao->Paginador.Rodape.Produtos}
+                <div id="Paginador" class="row">
+                    <div class="col-xs-12 text-right">
+                        <ul class="pagination">
+                            <li {condicao->Anterior.Paginador.Topo.Produtos}class="disabled"{condicao->Anterior.Paginador.Topo.Produtos}><a href="{linkVisualizar.Anterior.Paginador.Rodape.Produtos}">&laquo;</a></li>
+                            {repetir->Paginador.Rodape.Produtos}
+                                <li><a href="{linkVisualizar.Pagina.Produtos}">{numero.Pagina.Produtos}</a></li>
+                            {repetir->Paginador.Rodape.Produtos}
+                            <li {condicao->Proximo.Paginador.Rodape.Produtos}class="disabled"{condicao->Proximo.Paginador.Rodape.Produtos}><a href="{linkVisualizar.Proximo.Paginador.Rodape.Produtos}">&raquo;</a></li>
+                        </ul>
+                    </div>
+                </div>
+            {condicao->Paginador.Rodape.Produtos}
+        {condicao->Produtos}
+    </div>
+</div>
