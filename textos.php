@@ -39,9 +39,10 @@ if($lT->getTotal() > 0){
 	
 	$iTT->trocar('titulo', ($idioma->getTraducaoByConteudo($t->titulo)->traducao));
 	$iTT->trocar('texto', ($idioma->getTraducaoByConteudo($t->texto)->traducao));
-	
+
+    $iTT->condicao('condicao->imagens', !empty($t->getImagem()->getImage()->nome));
 	if(!empty($t->getImagem()->getImage()->nome))
-		$iTT->trocar('imagem', $t->getImagem()->getImage()->showHTML(300, 400));
+		$iTT->trocar('url.Imagem', $t->getImagem()->getImage()->showHTML(700, 550));
 	
 }
 

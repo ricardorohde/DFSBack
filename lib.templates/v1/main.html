@@ -413,6 +413,8 @@
 </div>
 <!-- / Campo de Busca -->
 
+
+{condicao->DFS/TV.Noticia}
 <!-- DFS / TV -->
 <div id="ContentDFSTV">
     <div class="container">
@@ -435,13 +437,16 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="row">
+                        {repetir->DFS/TV.Noticia}
                         <div class="col-xs-12 col-xs-sm-12 col-md-6 col-lg-6">
                             <div class="thumb">
                                 <div class="data bg11 c4">
-                                    <span class="day f32">15</span>
-                                    <span class="month">March</span>
+                                    <span class="day f32">{dia.Data.Noticia}</span>
+                                    <span class="month">{mesExtenso.Data.Noticia}</span>
                                 </div>
-                                <img src="images/dfstv/fcb690fb.01.jpg" class="img-responsive" />
+                                <a href="{linkVisualizar.Noticia}">
+                                    <img src="{url.Imagem.Noticia}" class="img-responsive" />
+                                </a>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="title">
@@ -454,91 +459,15 @@
                                     <div class="effect-right"></div>
                                 </div>
                                 <div class="title-text">
-                                    <h2 class="c1">ROCKET FIREWORKS</h2>
-                                    <p class="c1">LOREM IPSUM DOLOR</p>
+                                    <a href="{linkVisualizar.Noticia}">
+                                        <h2 class="c1">{titulo.Noticia}</h2>
+                                        <p class="c1">{subTitulo.Noticia}</p>
+                                    </a>
                                 </div>
                             </div>
                             <div class="clearfix"></div>
                         </div>
-                        <div class="col-xs-12 col-xs-sm-12 col-md-6 col-lg-6">
-                            <div class="thumb">
-                                <div class="data bg11 c4 pd10">
-                                    <span class="day f32">23</span>
-                                    <span class="month">April</span>
-                                </div>
-                                <img src="images/dfstv/a5ad197b.02.jpg" class="img-responsive" />
-                            </div>
-                            <div class="title">
-                                <div class="title-left">
-                                    <div class="title-icon">
-                                                <span class="icon-video">
-                                                    <img src="images/dfstv/70c78556.icone_02.png" />
-                                                </span>
-                                    </div>
-                                    <div class="effect-right"></div>
-                                </div>
-                                <div class="title-text">
-                                    <h2 class="c1">ROCKET FIREWORKS</h2>
-                                    <p class="c1">LOREM IPSUM DOLOR</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mgt40">
-                        <div class="col-xs-12 col-xs-sm-12 col-md-6 col-lg-6">
-                            <div class="thumb">
-                                <div class="data bg11 c4">
-                                    <span class="day f32">15</span>
-                                    <span class="month">March</span>
-                                </div>
-                                <img src="images/dfstv/fcb690fb.01.jpg" class="img-responsive" />
-                            </div>
-                            <div class="title">
-                                <div class="title-left">
-                                    <div class="title-icon">
-                                                <span class="icon-article">
-                                                    <img src="images/dfstv/c3187788.icone_01.png" />
-                                                </span>
-                                    </div>
-                                    <div class="effect-right"></div>
-                                </div>
-                                <div class="title-text">
-                                    <h2 class="c1">ROCKET FIREWORKS</h2>
-                                    <p class="c1">LOREM IPSUM DOLOR</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-xs-sm-12 col-md-6 col-lg-6">
-                            <div class="thumb">
-                                <div class="data bg11 c4 pd10">
-                                    <span class="day f32">23</span>
-                                    <span class="month">April</span>
-                                </div>
-                                <img src="images/dfstv/a5ad197b.02.jpg" class="img-responsive" />
-                            </div>
-                            <div class="title">
-                                <div class="title-left">
-                                    <div class="title-icon">
-                                                <span class="icon-video">
-                                                    <img src="images/dfstv/70c78556.icone_02.png" />
-                                                </span>
-                                    </div>
-                                    <div class="effect-right"></div>
-                                </div>
-                                <div class="title-text">
-                                    <h2 class="c1">ROCKET FIREWORKS</h2>
-                                    <p class="c1">LOREM IPSUM DOLOR</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row mgt40">
-                        <div class="col-xs-12 text-center">
-                            <a href="#" class="btn btn-danger">
-                                BLOG LIST PAGE
-                            </a>
-                        </div>
+                        {repetir->DFS/TV.Noticia}
                     </div>
                 </div>
             </div>
@@ -546,7 +475,9 @@
     </div>
 </div>
 <!-- / DFS / TV -->
+{condicao->DFS/TV.Noticia}
 
+{condicao->PontosTuristicos.Galeria}
 <!-- Pontos Turísticos -->
 <div id="ContentPontosTuristicos" class="mgt80">
     <div class="container">
@@ -569,39 +500,15 @@
             <div class="row mgt40">
                 <div class="col-xs-12">
                     <div class="row">
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 mgb20">
-                            <a href="#">
-                                <img src="images/atrativos_turisticos/bd1ca22c.01.jpg" class="img-responsive" />
-                            </a>
+                        {repetir->PontosTuristicos.Galeria}
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 mgb20 ponto-turistico">
+                            <div class="img">
+                                <a href="{linkVisualizar.PontoTuristico.Galeria}">
+                                    <img src="{url.Imagem.PontoTuristico.Galeria}" class="img-responsive" />
+                                </a>
+                            </div>
                         </div>
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 mgb20">
-                            <a href="#">
-                                <img src="images/atrativos_turisticos/ebb4b8ee.02.jpg" class="img-responsive" />
-                            </a>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 mgb20">
-                            <a href="#">
-                                <img src="images/atrativos_turisticos/61b04dda.03.jpg" class="img-responsive" />
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="row mgt30">
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 mgb20">
-                            <a href="#">
-                                <img src="images/atrativos_turisticos/a5ad197b.05.jpg" class="img-responsive" />
-                            </a>
-                        </div>
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 mgb20">
-                            <a href="#">
-                                <img src="images/atrativos_turisticos/ddd0cce7.06.jpg" class="img-responsive" />
-                            </a>
-                        </div>
-                        <div class="col-xs-12 col-sm-64 col-md-4 col-lg-4 mgb20">
-                            <a href="#">
-                                <img src="images/atrativos_turisticos/f9105e08.07.jpg" class="img-responsive" />
-                            </a>
-                        </div>
+                        {repetir->PontosTuristicos.Galeria}
                     </div>
                 </div>
             </div>
@@ -609,6 +516,7 @@
     </div>
 </div>
 <!-- / Pontos Turísticos -->
+{condicao->PontosTuristicos.Galeria}
 
 <!-- Queremos conhecer você -->
 <div id="ContentConhecerVoce" class="mgt80">

@@ -1,12 +1,12 @@
 <?php
 
 class Sistema {
-	
-	public static $BDHost 							= 'localhost';
-	public static $BDBanco							= 'jnt_dfs';
-	public static $BDUsuario						= 'root'; //onoteatrouser
-	public static $BDSenha 							= ''; //#8/wkVTFx=
-	public static $BDPrefixo						= 'tta_';
+
+    public static $BDHost 							= 'localhost';
+    public static $BDBanco							= 'jnt_dfs';
+    public static $BDUsuario						= 'root'; //onoteatrouser
+    public static $BDSenha 							= ''; //#8/wkVTFx=
+    public static $BDPrefixo						= 'tta_';
 	
 	public static $caminhoDiretorio					= '/';
 	public static $caminhoURL		 				= '/';
@@ -23,7 +23,7 @@ class Sistema {
 	public static $adminLayoutCaminhoURL			= '';
 	
 	public static $nomeEmpresa 						= 'DFS International';
-	public static $dominioEmpresa					= 'dev.dfs.com.py';
+	public static $dominioEmpresa					= 'ww1.dfs.com.py';
 	public static $emailEmpresa 					= 'contato@dfs.com.py';
 	public static $sistemaVersao					= 'Versão Beta 2.0';
 	

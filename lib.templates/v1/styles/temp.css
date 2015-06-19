@@ -1,0 +1,25 @@
+
+.ponto-turistico a {
+    color: #FFF;
+}
+.ponto-turistico .img {
+    width: 360px;
+    height: 270px;
+}
+.ponto-turistico .tit {
+    padding: 5px;
+    background: #000030;
+    opacity: 0.5;
+    color: #FFF;
+    font-size: 14px;
+}
+.ponto-turistico:hover .tit {
+    opacity: 1;
+}
+.ponto-turistico-detalhe .img img {
+    width: 100%;
+}
+
+.c5 a {
+    color: #53575a;
+}

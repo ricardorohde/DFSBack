@@ -3,7 +3,7 @@
 importar("Utilidades.Galerias.Lista.ListaGalerias");
 importar("Utilidades.UploadsDownloads.Lista.ListaUploadDownloadCategorias");
 
-$iTDG = new InterFaces(new Arquivos(Sistema::$layoutCaminhoURL."detalhesgaleria.html"));
+$iTDG = new InterFaces(new Arquivos(Sistema::$layoutCaminhoURL."detalhesfoto.html"));
 $num = 9;	
 
 $iTDG->setSESSION($_SESSION);
@@ -91,7 +91,7 @@ if($lG->getTotal() > 0){
 			$iTDG->enterRepeticao()->trocar('legenda.Imagem', nl2br($img->legenda));
 			$iTDG->enterRepeticao()->trocar('url.Imagem', Sistema::$caminhoURL.Sistema::$caminhoDataGalerias.$img->getImage()->nome.'.'.$img->getImage()->extensao);
 			$iTDG->enterRepeticao()->trocar('290.290.url.imagem.Imagem', $img->getImage()->pathImage(290, 290));
-			$iTDG->enterRepeticao()->trocar('125.125.url.imagem.Imagem', $img->getImage()->pathImage(250, 1000));
+			$iTDG->enterRepeticao()->trocar('url.thumb.imagem.Imagem', $img->getImage()->pathImage(200, 1000));
 			$iTDG->enterRepeticao()->trocar('imagem.Imagem', $img->getImage()->showHTML(800, 800));
 						
 		}

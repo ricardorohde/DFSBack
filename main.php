@@ -1,5 +1,6 @@
 <?php
 
+importar("Utilidades.Noticias.Lista.ListaNoticias");
 importar("Utilidades.Publicidades.Banners.Lista.ListaBannerCategorias");
 importar("LojaVirtual.Pedidos.Pagamentos.PagamentoPagSeguro");
 importar("LojaVirtual.Categorias.Lista.ListaProdutoCategorias");
@@ -145,6 +146,62 @@ while($po = $lPO->listar('DESC',ListaProdutos::ID)) {
     }
 }
 
+//DFS/TV
+
+$lN = new ListaNoticias;
+$lN->condicoes();
+$iTM->condicao('condicao->DFS/TV.Noticia', $lN->getTotal() > 0);
+if($lN->getTotal() > 0){
+
+    $iTM->createRepeticao("repetir->DFS/TV.Noticia");
+    while($n = $lN->listar("DESC", ListaNoticias::ID)){
+        $img = $n->getTexto()->getImagem();
+        if($img->getImage()->nome != "") {
+
+            $iTM->repetir();
+
+            $iTM->enterRepeticao()->trocar('dia.Data.Noticia', $n->getData()->mostrar("d"));
+            $iTM->enterRepeticao()->trocar('mesExtenso.Data.Noticia', $n->getData()->mesExtenso());
+
+            $iTM->enterRepeticao()->trocar('url.Imagem.Noticia', $img->getImage()->pathImage(555, 416));
+            $iTM->enterRepeticao()->trocar('titulo.Noticia', $n->getTexto()->titulo);
+            $iTM->enterRepeticao()->trocar('subTitulo.Noticia', $n->getTexto()->subTitulo);
+
+            $iTM->enterRepeticao()->trocar('linkVisualizar.Noticia', Sistema::$caminhoURL.$_SESSION['lang']."/".$n->getURL()->url);
+
+        }
+    }
+
+}
+
+//
+
+//Pontos Turísticos
+
+$lGC = new ListaGaleriaCategorias;
+$lGC->condicoes('', 1);
+if($lGC->getTotal() > 0){
+
+    $gC = $lGC->listar();
+    $iTM->condicao('condicao->PontosTuristicos.Galeria', $gC->getGalerias()->getTotal() > 0);
+    $iTM->createRepeticao("repetir->PontosTuristicos.Galeria");
+    while($g = $gC->getGalerias()->listar("DESC", ListaGalerias::ID)){
+        if($g->getImagens()->getTotal() > 0){
+            $iTM->repetir();
+            $img = $g->getImagens()->listar("DESC", ListaImagens::DESTAQUE);
+            if($img->getImage()->nome != "")
+                $iTM->enterRepeticao()->trocar("url.Imagem.PontoTuristico.Galeria", $img->getImage()->pathImage(360, 270));
+            $iTM->enterRepeticao()->trocar("linkVisualizar.PontoTuristico.Galeria", Sistema::$caminhoURL.$_SESSION['lang']."/fotos/".$gC->getURL()->url."/".$g->getURL()->url);
+        }
+    }
+
+}else
+    $iTM->condicao('condicao->PontosTuristicos.Galeria', false);
+
+//
+
+//include('lateral-direita.php');
+//$iTM->trocar('lateralDireita', $lateralDireita);
 
 $javaScript .= $iTM->createJavaScript()->concluir();
 

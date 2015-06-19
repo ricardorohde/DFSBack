@@ -76,13 +76,6 @@ if($lP->getTotal() > 0){
 	exit;
 }
 
-
-#################################
-# ADICIONA + 1 NO CAMPO VIEW    #
-#################################
-$p->view = $p->view+1;
-$lP->alterar($p);
-
 setcookie('favoritos['.count($_COOKIE['favoritos']).']', $p->getId(), time()*10, "/");
 
 $estoque = $p->estoque;

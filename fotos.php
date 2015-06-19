@@ -9,12 +9,12 @@ if(!empty($procura2)){
 
 }else{
 	
-	$iTP = new InterFaces(new Arquivos(Sistema::$layoutCaminhoDiretorio."galerias.html"));
+	$iTP = new InterFaces(new Arquivos(Sistema::$layoutCaminhoDiretorio."fotos.html"));
 
 	$iTP->setSESSION($_SESSION);
 	
-	$lGC = new ListaGaleriaCategorias;	
-	
+	$lGC = new ListaGaleriaCategorias;
+
 	if(!empty($_GET['idcategoria']))
 		$lGC->condicoes('', $_GET['idcategoria'], ListaGaleriaCategorias::ID);
 	elseif(!empty($procura)){
@@ -52,8 +52,8 @@ if(!empty($procura2)){
 				
 				if($g->getImagens()->getTotal() > 0){
 					$img = $g->getImagens()->listar("DESC", ListaImagens::DESTAQUE);
-					$iTP->enterRepeticao()->trocar('imagem.Galeria', $img->getImage()->showHTML(225, 180));
-					$iTP->enterRepeticao()->trocar('225.url.Imagem.Galeria', $img->getImage()->pathImage(225, 180));
+					$iTP->enterRepeticao()->trocar('imagem.Galeria', $img->getImage()->showHTML(360, 270));
+					$iTP->enterRepeticao()->trocar('url.Imagem.Galeria', $img->getImage()->pathImage(360, 270));
 				}
 				
 				$iTP->enterRepeticao()->trocar("titulo.Galeria", $idioma->getTraducaoByConteudo($g->titulo)->traducao);

@@ -381,7 +381,7 @@ if($lP->getTotal() > 0){
 
 $total = 0;
 
-
+//var_dump($u); exit;
 if(file_exists($pagina.'.php'))
 	include($pagina.'.php');
 elseif(file_exists($u->tabela.'.php'))
