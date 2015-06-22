@@ -3,10 +3,10 @@
 class Sistema {
 
     public static $BDHost 							= 'localhost';
-    public static $BDBanco							= 'jnt_dfs';
-    public static $BDUsuario						= 'root'; //onoteatrouser
-    public static $BDSenha 							= ''; //#8/wkVTFx=
-    public static $BDPrefixo						= 'tta_';
+    public static $BDBanco							= 'pioneeri_v3';
+    public static $BDUsuario						= 'pioneeri_dfs'; //onoteatrouser
+    public static $BDSenha 							= '~7D,cIp[e**C'; //#8/wkVTFx=
+    public static $BDPrefixo						= 'dfs_';
 	
 	public static $caminhoDiretorio					= '/';
 	public static $caminhoURL		 				= '/';
@@ -34,7 +34,7 @@ class Sistema {
 	public static $caminhoDataProdutoCategorias		= 'produtos/categorias/';
 	public static $caminhoDataProdutoMarcas			= 'produtos/marcas/';
 	public static $caminhoDataProdutoOpcoes			= 'produtos/opcoes/';
-	public static $caminhoDataProdutos				= 'lib.data/produtos/';
+	public static $caminhoDataProdutos				= 'fotos/';
 	public static $caminhoDataOfertasColetivas		= 'ofertascoletivas/';
 	public static $caminhoDataTextos				= 'geral/textos/';
 	public static $caminhoDataUsuarios				= 'geral/usuarios/';

@@ -18,7 +18,8 @@ $iTM->trocar('lang', $_SESSION['lang']);
  */
 
 $pCP = new ProdutoCategoria;
-$cond[1] = array('campo' => ListaProdutoCategorias::VISAOUNICA, 'valor' => ListaProdutoCategorias::VALOR_VISAOUNICA_TRUE);
+//$cond[1] = array('campo' => ListaProdutoCategorias::VISAOUNICA, 'valor' => ListaProdutoCategorias::VALOR_VISAOUNICA_TRUE);
+$cond[1] = array('campo' => ListaProdutoCategorias::CATEGORIAPAI, 'valor' => 0);
 $pCP->getSubCategorias()->condicoes($cond);unset($cond);
 
 $lt = $pCP->getSubCategorias();
@@ -99,11 +100,13 @@ $lM->setParametros(15,'limite');
 $iTM->condicao('condicao->Marcas', $lM->getTotal() > 0);
 $iTM->createRepeticao('repetir->Marcas');
 while($m = $lM->listar()) {
-    $iTM->repetir();
+    if($m->getImagem()->nome != ""){
+        $iTM->repetir();
 
-    $iTM->enterRepeticao()->trocar('Marcas.Nome', $m->nome);
-    $iTM->enterRepeticao()->trocar('Marcas.Imagem', $m->getImagem()->pathImage(100,100));
-    $iTM->enterRepeticao()->trocar('Marcas.URL', Sistema::$caminhoURL.$_SESSION['lang']."/produtos/&marca=".$m->getURL()->url);
+        $iTM->enterRepeticao()->trocar('Marcas.Nome', $m->nome);
+        $iTM->enterRepeticao()->trocar('Marcas.Imagem', $m->getImagem()->pathImage(100, 100));
+        $iTM->enterRepeticao()->trocar('Marcas.URL', Sistema::$caminhoURL . $_SESSION['lang'] . "/produtos/&marca=" . $m->getURL()->url);
+    }
 }
 
 # Lista os Produtos Mais Visualizados
@@ -115,7 +118,7 @@ $lPMV->setParametros(15,'limite');
 $iTM->condicao('condicao->ProdutosMaisVisualizados', $lPMV->getTotal() > 0);
 $iTM->createRepeticao('repetir->ProdutosMaisVisualizados');
 while($pmv = $lPMV->listar('DESC',ListaProdutos::VIEW)) {
-    if($pmv->getCategorias()->getTotal() > 0) {
+    if($pmv->getCategorias()->getTotal() > 0 && $pmv->getImagens()->getTotal() > 0) {
         $iTM->repetir();
 
         $iTM->enterRepeticao()->trocar('ProdutosMV.Nome', $idioma->getTraducaoByConteudo($pmv->nome)->traducao);
@@ -127,17 +130,18 @@ $lPMV->close();
 
 # lista os Produtos em Ofertas
 $lPO = new ListaProdutos();
-$cond[1] = array('campo' => ListaProdutos::VALORVENDA, 'valor' => 0, 'operador' => '>');
-$cond[2] = array('campo' => ListaProdutos::DISPONIVEL, 'valor' => ListaProdutos::VALOR_PROMOCAO_TRUE);
+$cond[1] = array('campo' => ListaProdutos::PROMOCAO, 'valor' => ListaProdutos::VALOR_DISPONIVEL_TRUE);
+$cond[2] = array('campo' => ListaProdutos::DISPONIVEL, 'valor' => ListaProdutos::VALOR_DISPONIVEL_TRUE);
 $lPO->condicoes($cond);unset($cond);
 
 $iTM->condicao('condicao->Produtos.Oferta', $lPO->getTotal() > 0);
 $iTM->createRepeticao('repetir->Produtos.Oferta');
 while($po = $lPO->listar('DESC',ListaProdutos::ID)) {
-    if($po->getCategorias()->getTotal() > 0) {
+    if($po->getCategorias()->getTotal() > 0 && $po->getImagens()->getTotal() > 0) {
         $iTM->repetir();
 
-        $iTM->enterRepeticao()->trocar('Produtos.Ofertas.Nome', $idioma->getTraducaoByConteudo($po->nome)->traducao);
+        $nome = $idioma->getTraducaoByConteudo($po->nome)->traducao;
+        $iTM->enterRepeticao()->trocar('Produtos.Ofertas.Nome', strlen(strip_tags($nome)) <= 30 ? strip_tags($nome) : substr(strip_tags($nome), 0, 30)."...");
         $iTM->enterRepeticao()->trocar('Produtos.Ofertas.URL', Sistema::$caminhoURL . $_SESSION['lang'] . "/produtos/" . $po->getCategorias()->listar()->getURL()->url . "/" . $po->getURL()->url);
         $iTM->enterRepeticao()->trocar('Produtos.Ofertas.Imagem', $po->getImagens()->listar("DESC", ListaImagens::DESTAQUE)->getImage()->pathImage(120,120));
 

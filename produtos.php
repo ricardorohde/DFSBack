@@ -299,14 +299,8 @@ if(!empty($procura2)){
 	
 	if($pCP->getSubCategorias()->getTotal() == 0 || !empty($_GET['busca']) || $rsPR['listasubcategorias'] == 0){
 				
-		//$allCat = ProdutoCategoria::getIdAllSubCategoria($pCP->getId());
 		$allCat = $pCP->getIdAllSubCategoria();
 		$sql = '';
-		/*for($i = 0; $i < count($allCat); $i++){
-			$sql .= $allCat[$i];
-			if($i < count($allCat)-1)
-				$sql .= ', ';
-		}*/
 		foreach($allCat as $k => $v){
 			$sql .= $k.",";
 		}
@@ -316,87 +310,27 @@ if(!empty($procura2)){
 		foreach($arrayFiltros as $k => $v){
 			$sqlFiltros .= "AND (SELECT COUNT(pog.id) FROM ".Sistema::$BDPrefixo."produtos_opcoes_gerados pog WHERE pog.opcao = '".$k."' AND pog.valor = '".$v."' AND pog.produto = p.id) > 0 ";
 		}
-		/*$sql = "SELECT a.id 
-					FROM ((SELECT p.id 
-							FROM ".Sistema::$BDPrefixo."produtos p 
-							LEFT OUTER JOIN ".Sistema::$BDPrefixo."relacionamento_produtos_categorias rpc
-								ON p.id = rpc.produto
-							WHERE ".(!empty($sqlCat) ? "rpc.categoria IN 
-									(".$sqlCat.")
-								AND " : '')."p.".ListaProdutos::DISPONIVEL." = '".ListaProdutos::VALOR_DISPONIVEL_TRUE."' 
-								".$sqlFiltros."
-								AND p.produtopai = 0
-								AND 
-									(p.".ListaProdutos::CODIGO." = '".str_replace(" ", "%", $_GET['busca'])."' 
-									OR p.".ListaProdutos::NOME." LIKE '%".str_replace(" ", "%", $_GET['busca'])."%' 
-									OR p.".ListaProdutos::DESCRICAO." LIKE '%".str_replace(" ", "%", $_GET['busca'])."%') 
-								".($pM->getId() != '' ? "AND 
-									p.".ListaProdutos::MARCA." = ".$pM->getId() : '').")
-					UNION
-					(SELECT p.id
-							FROM ".Sistema::$BDPrefixo."produtos p 
-							INNER JOIN ".Sistema::$BDPrefixo."produtos p2
-								ON p2.id = p.produtopai
-							LEFT OUTER JOIN ".Sistema::$BDPrefixo."relacionamento_produtos_categorias rpc
-								ON p.produtopai = rpc.produto
-							WHERE ".(!empty($sqlCat) ? "rpc.categoria IN 
-									(".$sqlCat.")
-								AND " : '')."p2.".ListaProdutos::DISPONIVEL." = '".ListaProdutos::VALOR_DISPONIVEL_TRUE."' 
-								".$sqlFiltros."
-								AND p.produtopai > 0
-								AND 
-									(p.".ListaProdutos::CODIGO." = '".str_replace(" ", "%", $_GET['busca'])."'
-									OR p2.".ListaProdutos::CODIGO." = '".str_replace(" ", "%", $_GET['busca'])."' 
-									OR p.".ListaProdutos::NOME." LIKE '%".str_replace(" ", "%", $_GET['busca'])."%' 
-									OR p2.".ListaProdutos::NOME." LIKE '%".str_replace(" ", "%", $_GET['busca'])."%' 
-									OR p.".ListaProdutos::DESCRICAO." LIKE '%".str_replace(" ", "%", $_GET['busca'])."%'
-									OR p2.".ListaProdutos::DESCRICAO." LIKE '%".str_replace(" ", "%", $_GET['busca'])."%')
-								".($pM->getId() != '' ? "AND 
-									p.".ListaProdutos::MARCA." = ".$pM->getId() : '')."
-							GROUP BY p.produtopai)) a";	*/
-		$sql = "SELECT a.id 
-					FROM ((SELECT p.id 
-							FROM ".Sistema::$BDPrefixo."produtos p 
-							LEFT OUTER JOIN ".Sistema::$BDPrefixo."relacionamento_produtos_categorias rpc
-								ON p.id = rpc.produto
-							WHERE ".(!empty($sqlCat) ? "rpc.categoria IN 
-									(".$sqlCat.")
-								AND " : '')."p.".ListaProdutos::DISPONIVEL." = '".ListaProdutos::VALOR_DISPONIVEL_TRUE."' 
-								".$sqlFiltros."
-								AND p.produtopai = 0
-								AND 
-									(p.".ListaProdutos::CODIGO." = '".str_replace(" ", "%", $_GET['busca'])."' 
-									OR p.".ListaProdutos::NOME." LIKE '%".str_replace(" ", "%", $_GET['busca'])."%' 
-									OR p.".ListaProdutos::DESCRICAO." LIKE '%".str_replace(" ", "%", $_GET['busca'])."%') 
-								".($pM->getId() != '' ? "AND 
-									p.".ListaProdutos::MARCA." = ".$pM->getId() : '').")
-					UNION
-					(SELECT p.id
-							FROM ".Sistema::$BDPrefixo."produtos p 
-							INNER JOIN ".Sistema::$BDPrefixo."produtos p2
-								ON p2.id = p.produtopai
-							LEFT OUTER JOIN ".Sistema::$BDPrefixo."relacionamento_produtos_categorias rpc
-								ON p.produtopai = rpc.produto
-							WHERE ".(!empty($sqlCat) ? "rpc.categoria IN 
-									(".$sqlCat.")
-								AND " : '')."p2.".ListaProdutos::DISPONIVEL." = '".ListaProdutos::VALOR_DISPONIVEL_TRUE."' 
-								".$sqlFiltros."
-								AND p.produtopai > 0
-								AND 
-									(p.".ListaProdutos::CODIGO." = '".str_replace(" ", "%", $_GET['busca'])."'
-									OR p2.".ListaProdutos::CODIGO." = '".str_replace(" ", "%", $_GET['busca'])."' 
-									OR p.".ListaProdutos::NOME." LIKE '%".str_replace(" ", "%", $_GET['busca'])."%' 
-									OR p2.".ListaProdutos::NOME." LIKE '%".str_replace(" ", "%", $_GET['busca'])."%' 
-									OR p.".ListaProdutos::DESCRICAO." LIKE '%".str_replace(" ", "%", $_GET['busca'])."%'
-									OR p2.".ListaProdutos::DESCRICAO." LIKE '%".str_replace(" ", "%", $_GET['busca'])."%')
-								".($pM->getId() != '' ? "AND 
-									p.".ListaProdutos::MARCA." = ".$pM->getId() : '')."
-							)) a";
-		
-		
-		
-		 //$sql = "SELECT p.*, IF(p.nome='', (SELECT p2.nome FROM ".Sistema::$BDPrefixo."produtos p2 WHERE p2.id = p.produtopai), p.nome) as nome, IF(p.valorreal<=0, (SELECT p2.valorreal FROM ".Sistema::$BDPrefixo."produtos p2 WHERE p2.id = p.produtopai), p.valorreal) as valorreal FROM ".Sistema::$BDPrefixo."produtos p WHERE p.id IN (".$sql.") AND p.produtopai NOT IN (".$sql.")";				
-		$sql = "SELECT p.*, IF(p.nome='', (SELECT p2.nome FROM ".Sistema::$BDPrefixo."produtos p2 WHERE p2.id = p.produtopai), p.nome) as nome, IF(p.valorreal<=0, (SELECT p2.valorreal FROM ".Sistema::$BDPrefixo."produtos p2 WHERE p2.id = p.produtopai), p.valorreal) as valorreal FROM ".Sistema::$BDPrefixo."produtos p WHERE p.id IN (".$sql.")";
+
+		$sql = "SELECT p.*
+                    FROM ".Sistema::$BDPrefixo."produtos p
+                    LEFT OUTER JOIN ".Sistema::$BDPrefixo."relacionamento_produtos_categorias rpc
+                        ON p.id = rpc.produto
+                    WHERE ".(!empty($sqlCat) ? "rpc.categoria IN
+                            (".$sqlCat.")
+                        AND " : '')."p.".ListaProdutos::DISPONIVEL." = '".ListaProdutos::VALOR_DISPONIVEL_TRUE."'
+                        ".$sqlFiltros."
+                        AND p.produtopai = 0
+                        AND
+                            (p.".ListaProdutos::CODIGO." = '".str_replace(" ", "%", $_GET['busca'])."'
+                            OR p.".ListaProdutos::NOME." LIKE '%".str_replace(" ", "%", $_GET['busca'])."%'
+                            OR p.".ListaProdutos::DESCRICAO." LIKE '%".str_replace(" ", "%", $_GET['busca'])."%')
+                        ".($pM->getId() != '' ? "AND
+                            p.".ListaProdutos::MARCA." = ".$pM->getId() : '');
+
+
+
+		//$sql = "SELECT p.*, IF(p.nome='', (SELECT p2.nome FROM ".Sistema::$BDPrefixo."produtos p2 WHERE p2.id = p.produtopai), p.nome) as nome, IF(p.valorreal<=0, (SELECT p2.valorreal FROM ".Sistema::$BDPrefixo."produtos p2 WHERE p2.id = p.produtopai), p.valorreal) as valorreal FROM ".Sistema::$BDPrefixo."produtos p WHERE p.id IN (".$sql.") AND p.produtopai NOT IN (".$sql.")";
+		//$sql = "SELECT p.*, IF(p.nome='', (SELECT p2.nome FROM ".Sistema::$BDPrefixo."produtos p2 WHERE p2.id = p.produtopai), p.nome) as nome, IF(p.valorreal<=0, (SELECT p2.valorreal FROM ".Sistema::$BDPrefixo."produtos p2 WHERE p2.id = p.produtopai), p.valorreal) as valorreal FROM ".Sistema::$BDPrefixo."produtos p WHERE p.id IN (".$sql.")";
 		
 		$lP = new ListaProdutos;
 		$lP->condicoes('', '', '', '', $sql);
@@ -442,7 +376,7 @@ if(!empty($procura2)){
 			$lP->setParametros($minimo)->setParametros($maximo, 'limite');
 			$lP->enableDadosProdutoPai();
 
-			
+
 			if($_GET['order'] == 1 || empty($_GET['order'])){
 				$order = ListaProdutos::NOME;
 				$dir = "ASC";
@@ -547,44 +481,8 @@ if(!empty($procura2)){
 				$iTP->enterRepeticao()->trocar('linkVisualizar.Produto', $linkVisualizar);
 				
 				$idp = $p->getProdutoPai() > 0 ? $p->getProdutoPai() : $p->getId();
-				
-				$sqlOpcoes = "SELECT pov.*, 
-									po.nome as nomeopcao,
-									po.tipo,
-									(SELECT u.url
-										FROM ".Sistema::$BDPrefixo."urls u
-										WHERE u.tabela = 'produtos'
-											AND u.valor = pog.produto) as url
-								FROM ".Sistema::$BDPrefixo."produtos_opcoes_gerados pog
-								INNER JOIN ".Sistema::$BDPrefixo."produtos_opcoes po
-									ON po.id = pog.opcao
-								INNER JOIN ".Sistema::$BDPrefixo."produtos_opcoes_valores pov
-									ON pov.id = pog.valor
-								WHERE pog.produto IN (SELECT p.id
-														FROM ".Sistema::$BDPrefixo."produtos p
-														WHERE p.id = '".$idp."' OR p.produtopai = '".$idp."')
-									AND po.multi = 1
-									AND po.aberto = 1
-								GROUP BY pov.id
-								ORDER BY nomeopcao, pov.valor ASC";
-				$con->executar($sqlOpcoes);
-				$iTP->enterRepeticao()->createRepeticao("repetir->ProdutoOpcoes.Produto");
-				$opcao = 0;
-				while($rsPO = $con->getRegistro()){
-					if($opcao != $rsPO['opcao']){
-						$iTP->enterRepeticao()->repetir();
-						$iTP->enterRepeticao()->enterRepeticao()->condicao("condicao->Texto.ProdutoOpcao.Produto", $rsPO['tipo'] == 0);
-						$iTP->enterRepeticao()->enterRepeticao()->condicao("condicao->Cor.ProdutoOpcao.Produto", $rsPO['tipo'] == 2);
-						$iTP->enterRepeticao()->enterRepeticao()->trocar("nome.ProdutoOpcao.Produto", $rsPO['nomeopcao']);
-						$iTP->enterRepeticao()->enterRepeticao()->createRepeticao('repetir->ProdutoOpcaoValores.ProdutoOpcao.Produto');
-						$opcao = $rsPO['opcao'];
-					}
-					$iTP->enterRepeticao()->enterRepeticao()->repetir();
-					$iTP->enterRepeticao()->enterRepeticao()->enterRepeticao()->trocar("valor.ProdutoOpcaoValor.ProdutoOpcao.Produto", $rsPO['valor']);
-					$iTP->enterRepeticao()->enterRepeticao()->enterRepeticao()->trocar("cor.ProdutoOpcaoValor.ProdutoOpcao.Produto", $rsPO['cor']);
-					$iTP->enterRepeticao()->enterRepeticao()->enterRepeticao()->trocar("linkVisualizar.ProdutoOpcaoValor.ProdutoOpcao.Produto", Sistema::$caminhoURL.$_SESSION['lang'].'/produtos/'.(!empty($procura) ? $procura : ($cat ? $cat->getURL()->getURL() : ''))."/".(empty($rsPO['url']) ? $p->getURL()->url : $rsPO['url']));
-				}
-				
+
+
 			}
 			
 			//Paginador

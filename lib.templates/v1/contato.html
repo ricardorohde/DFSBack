@@ -1,0 +1,59 @@
+
+<div class="container">
+<section id="PrincipaisProdutos">
+    <header>
+        <h1 class="c5 mgb0 lh30 bold">
+            {titulo}
+        </h1>
+        <h4 class="mgt0 font2 c5">
+            {subTitulo}
+        </h4>
+    </header>
+    <div class="text-left">
+        <div class="text-left">
+            <hr class="hr2 c3 pull-left" />
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="row mgt40 mgb20">
+        <form name="contato" method="POST">
+            <div class="col-xs-12">
+                <div class="alert alert-success" id="mensagemEnviado">{mensagemEnviado}</div>
+            </div>
+            <p class="c1 f14">
+                {texto}
+            </p>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="InpNome" class="c1">Nome</label>
+                        <input type="text" name="nome" id="InpNome" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="InpEmail" class="c1">E-mail</label>
+                        <input type="text" name="email" id="InpEmail" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <textarea name="mensagem" class="form-control" placeholder="Escreve sua mensagem aqui" rows="10"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 text-right">
+                    <button class="btn btn-default">
+                        Envie Agora
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+</div>

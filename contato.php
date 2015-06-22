@@ -8,8 +8,8 @@ $iTT = new InterFaces(new Arquivos(Sistema::$layoutCaminhoDiretorio."contato.htm
 $iTT->setSession($_SESSION);
 $iTT->trocar('lang', $_SESSION['lang']);
 
-include('lateral-esquerda.php');
-$iTT->trocar('lateralEsquerda', $lateralEsquerda);
+//include('lateral-esquerda.php');
+//$iTT->trocar('lateralEsquerda', $lateralEsquerda);
 
 $lT = new ListaTextos;
 
@@ -34,7 +34,7 @@ if(!empty($_POST['mensagem'])){
 
 	$temE = new InterFaces(new Arquivos(Sistema::$adminLayoutCaminhoDiretorio."/email-padrao.html"));
 	
-	$msg = "<br /><br />Nome: ".$_POST['nome']."<br />E-mail: ".$_POST['email']."<br />Cidade: ".$_POST['cidade']."<br />Estado: ".$_POST['estado']."<br />Telefone: ".$_POST['telefone']."<br />Mensagem:<br />".$_POST['mensagem']."<br /><br />";
+	$msg = "<br /><br />Nome: ".$_POST['nome']."<br />E-mail: ".$_POST['email']."<br />Mensagem:<br />".$_POST['mensagem']."<br /><br />";
 	
 	$temE->trocar('texto', $msg);
 	$msg = ($temE->concluir());
@@ -47,8 +47,7 @@ if(!empty($_POST['mensagem'])){
 
 	EnvioEmail::enviar();
 	
-	echo JSON::_Encode(array('msg' => $idioma->getTraducaoByConteudo('Contato enviado com sucesso')->traducao.'! '.$idioma->getTraducaoByConteudo('Em breve entraremos em contato')->traducao.'.'));
-	exit;
+	$iTT->trocar('mensagemEnviado', 'Agradecemos seu contato, em breve retornaremos seu contato.');
 	
 }
 if($lT->getTotal() > 0){

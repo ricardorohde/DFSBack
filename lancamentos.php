@@ -5,7 +5,7 @@ importar("LojaVirtual.Pedidos.Pagamentos.PagamentoPagSeguro");
 importar("LojaVirtual.Categorias.Lista.ListaProdutoCategorias");
 importar("LojaVirtual.Produtos.ProdutoBusca");
 
-$iTM = new InterFaces(new Arquivos(Sistema::$layoutCaminhoDiretorio."lancamentos.html"));
+$iTM = new InterFaces(new Arquivos(Sistema::$layoutCaminhoDiretorio."produtos.html"));
 
 $iTM->setSESSION($_SESSION);
 $iTM->trocar('lang', $_SESSION['lang']);
@@ -15,37 +15,14 @@ $titulo = $idioma->getTraducaoByConteudo("Novidades")->traducao;
 $descricao = $idioma->getTraducaoByConteudo("Novidades")->traducao;
 //
 
-//include('lateral-esquerda.php');
-//$iTM->trocar('lateralEsquerda', $lateralEsquerda);
+include('lateral-esquerda.php');
+$iTM->trocar('lateralEsquerda', $lateralEsquerda);
 
-/*$lBC = new ListaBannerCategorias;
-$lBC->condicoes("", 1, ListaBannerCategorias::ID);
-if($lBC->getTotal() > 0){
-	$bC = $lBC->listar();
-	
-	$dT = new DataHora;
-	$aR[1] = array('campo' => ListaBanners::ATIVO, 		'valor' => ListaBanners::VALOR_ATIVO_TRUE);
-	$bC->getBanners()->condicoes($aR);
-	
-	if($bC->getBanners()->getTotal() > 0){
-		while($b = $bC->getBanners()->listar("DESC", "rand()")){
-			
-			if($b->getDataInicio()->mostrar("YmdHi") == $b->getDataFim()->mostrar("YmdHi") || ($b->getDataInicio()->mostrar("YmdHi") <= $dT->mostrar("YmdHi") && $b->getDataFim()->mostrar("YmdHi") >= $dT->mostrar("YmdHi"))){
-				$iTM->trocar("imagem.Banner", $b->getImagem()->showHTML(990, 1000));
-				$iTM->trocar("enderecoURL.Banner", $b->enderecoURL);
-			}
-			
-		}
-	}
-		
-}*/
-
+$iTM->trocar('titulo', "Novidades");
 
 unset($aR);
 $aR[1] = array('campo' => ListaProdutos::DISPONIVEL, 'valor' => ListaProdutos::VALOR_DISPONIVEL_TRUE);
 $aR[2] = array('campo' => ListaProdutos::LANCAMENTO, 'valor' => ListaProdutos::VALOR_DISPONIVEL_TRUE);
-$aR[3] = array('campo' => ListaProdutos::REMOVIDO, 'valor' => ListaProdutos::VALOR_DISPONIVEL_FALSE);
-$aR[4] = array('campo' => ListaProdutos::PRODUTOPAI, 'valor' => '');
 
 $lP = new ListaProdutos;
 $lP->condicoes($aR);
@@ -124,43 +101,7 @@ if($lP->getTotal() > 0){
 		$iTM->enterRepeticao()->trocar('linkVisualizar.Produto', $linkVisualizar);
 		
 		$idp = $p->getProdutoPai() > 0 ? $p->getProdutoPai() : $p->getId();
-				
-		$sqlOpcoes = "SELECT pov.*, 
-							po.nome as nomeopcao,
-							po.tipo,
-							(SELECT u.url
-								FROM ".Sistema::$BDPrefixo."urls u
-								WHERE u.tabela = 'produtos'
-									AND u.valor = pog.produto) as url
-						FROM ".Sistema::$BDPrefixo."produtos_opcoes_gerados pog
-						INNER JOIN ".Sistema::$BDPrefixo."produtos_opcoes po
-							ON po.id = pog.opcao
-						INNER JOIN ".Sistema::$BDPrefixo."produtos_opcoes_valores pov
-							ON pov.id = pog.valor
-						WHERE pog.produto IN (SELECT p.id
-												FROM ".Sistema::$BDPrefixo."produtos p
-												WHERE p.id = '".$idp."' OR p.produtopai = '".$idp."')
-							AND po.multi = 1
-							AND po.aberto = 1
-						GROUP BY pov.id
-						ORDER BY nomeopcao, pov.valor ASC";
-		$con->executar($sqlOpcoes);
-		$iTM->enterRepeticao()->createRepeticao("repetir->ProdutoOpcoes.Produto");
-		$opcao = 0;
-		while($rsPO = $con->getRegistro()){
-			if($opcao != $rsPO['opcao']){
-				$iTM->enterRepeticao()->repetir();
-				$iTM->enterRepeticao()->enterRepeticao()->condicao("condicao->Texto.ProdutoOpcao.Produto", $rsPO['tipo'] == 0);
-				$iTM->enterRepeticao()->enterRepeticao()->condicao("condicao->Cor.ProdutoOpcao.Produto", $rsPO['tipo'] == 2);
-				$iTM->enterRepeticao()->enterRepeticao()->trocar("nome.ProdutoOpcao.Produto", $rsPO['nomeopcao']);
-				$iTM->enterRepeticao()->enterRepeticao()->createRepeticao('repetir->ProdutoOpcaoValores.ProdutoOpcao.Produto');
-				$opcao = $rsPO['opcao'];
-			}
-			$iTM->enterRepeticao()->enterRepeticao()->repetir();
-			$iTM->enterRepeticao()->enterRepeticao()->enterRepeticao()->trocar("valor.ProdutoOpcaoValor.ProdutoOpcao.Produto", $rsPO['valor']);
-			$iTM->enterRepeticao()->enterRepeticao()->enterRepeticao()->trocar("cor.ProdutoOpcaoValor.ProdutoOpcao.Produto", $rsPO['cor']);
-			$iTM->enterRepeticao()->enterRepeticao()->enterRepeticao()->trocar("linkVisualizar.ProdutoOpcaoValor.ProdutoOpcao.Produto", Sistema::$caminhoURL.$_SESSION['lang'].'/produtos/'.(!empty($procura) ? $procura : ($cat ? $cat->getURL()->getURL() : ''))."/".(empty($rsPO['url']) ? $p->getURL()->url : $rsPO['url']));
-		}
+
 		
 	}
 	

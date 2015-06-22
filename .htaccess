@@ -5,6 +5,9 @@ RewriteCond %{DOCUMENT_ROOT}/lib\.data/cache%{REQUEST_URI}/index\.html -f
 RewriteRule ^.*$ lib.data/cache/%{REQUEST_URI}/index.html [NC]
 
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)fotos/(.*)\.(jpg|png|jpeg|gif|bmp)$ http://www.pioneerinter.com/fotos/$2.$3 [NC,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)\.(jpg|png|jpeg|gif|bmp)$ lib.conf/openImage.php [NC,L]
 
 RewriteCond %{REQUEST_FILENAME} !-f

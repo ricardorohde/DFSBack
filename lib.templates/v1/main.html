@@ -122,38 +122,38 @@
                     <nav class="mgb100">
                         <ul class="mgt20 list-inline list-unstyled">
                             <li class="text-center">
-                                <a href="#" class="bg5 icone">
+                                <a href="{caminhoURL}{lang}/lancamentos" class="bg5 icone">
                                     <img src="images/afffa58d.icon_01.png" class="img-responsive" />
                                 </a>
                                 <br />
-                                <a href="#" class="c4 block mgt10">
+                                <a href="{caminhoURL}{lang}/lancamentos" class="c4 block mgt10">
                                     NOVIDADES
                                 </a>
                             </li>
                             <li class="text-center">
-                                <a href="#" class="bg5 icone">
+                                <a href="{caminhoURL}{lang}/qualidade" class="bg5 icone">
                                     <img src="images/b70d70f8.icon_02.png" class="img-responsive" />
                                 </a>
                                 <br />
-                                <a href="#" class="c4 block mgt10">
+                                <a href="{caminhoURL}{lang}/qualidade" class="c4 block mgt10">
                                     QUALIDADE
                                 </a>
                             </li>
                             <li class="text-center">
-                                <a href="#" class="bg5 icone">
+                                <a href="{caminhoURL}{lang}/garantia" class="bg5 icone">
                                     <img src="images/141c576a.icon_03.png" class="img-responsive" />
                                 </a>
                                 <br />
-                                <a href="#" class="c4 block mgt10">
+                                <a href="{caminhoURL}{lang}/garantia" class="c4 block mgt10">
                                     GARANTIA
                                 </a>
                             </li>
                             <li class="text-center">
-                                <a href="#" class="bg5 icone">
+                                <a href="{caminhoURL}{lang}/seguranca" class="bg5 icone">
                                     <img src="images/76b420bb.icon_04.png" class="img-responsive" />
                                 </a>
                                 <br />
-                                <a href="#" class="c4 block mgt10">
+                                <a href="{caminhoURL}{lang}/seguranca" class="c4 block mgt10">
                                     SEGURANÇA
                                 </a>
                             </li>
@@ -193,7 +193,7 @@
     <nav id="MenuProdutosPrincipais" class="mgt40">
         <ul class="list-unstyled list-inline mgl0 f14 text-xs-center text-sm-center text-md-left text-lg-left">
             <li>
-                <a href="#" class="c5">Todos</a>
+                <a href="{caminhoURL}{lang}/produtos" class="c5">Todos</a>
             </li>
             {repetir->ProdutoCategorias}
             <li>
@@ -393,7 +393,7 @@
                 </div>
             </div>
             <div class="col-xs-12 col-md-5">
-                <form name="busca" method="GET" class="mgb0">
+                <form name="busca" method="post" class="mgb0" onsubmit="document.location.href = '{caminhoURL}{lang}/produtos&busca='+$('#InpSearch').val(); return false;">
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="form-group lh12 mgt20">
@@ -540,7 +540,7 @@
             <div class="row mgt40">
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="font2 bold c5 mgb20 f14">
-                        SOCIAL WITH US
+                        Redes Sociais
                     </div>
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-4 text-xs-center text-sm-center text-md-left text-lg-left">
@@ -550,7 +550,7 @@
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-8 text-xs-center text-sm-center col-md-left col-lg-left f14 c1">
                             <div class="info">
-                                15k fans, 37k likes
+
                             </div>
                         </div>
                     </div>
@@ -562,7 +562,7 @@
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-8 text-xs-center text-sm-center col-md-left col-lg-left f14 c1">
                             <div class="info">
-                                15k fans, 37k likes
+
                             </div>
                         </div>
                     </div>
@@ -574,15 +574,15 @@
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-8 text-xs-center text-sm-center col-md-left col-lg-left f14 c1">
                             <div class="info">
-                                15k fans, 37k likes
+
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <form name="contato" method="POST">
+                    <form name="contato" method="POST" action="{caminhoURL}{lang}/contato">
                         <div class="font2 bold c5 mgb20 f14">
-                            CONTACT US
+                            Fale Conosco
                         </div>
                         <p class="c1 f14">
                             Eiiitaaa Mainhaaa!! Esse Lorem ipsum é só na sacanageeem!! E que abundância meu irmão viuu!! Domingo ela não vai! Danadaa!!
@@ -590,7 +590,7 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
-                                    <label for="InpNome" class="c1">Name</label>
+                                    <label for="InpNome" class="c1">Nome</label>
                                     <input type="text" name="nome" id="InpNome" class="form-control" />
                                 </div>
                             </div>
@@ -606,14 +606,14 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
-                                    <textarea name="mensagem" class="form-control" placeholder="Write your comments here"></textarea>
+                                    <textarea name="mensagem" class="form-control" placeholder="Escreve sua mensagem aqui"></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12 text-right">
                                 <button class="btn btn-default">
-                                    SUBMIT NOW
+                                    Envie Agora
                                 </button>
                             </div>
                         </div>
@@ -689,43 +689,31 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                     <h2 class="font2 bold c4 mgb40 text-xs-center text-sm-center text-md-left text-lg-left">
-                        RECENT POSTS
+                        LINKS
                     </h2>
                     <ul class="list-unstyled links text-xs-center text-sm-center text-md-left text-lg-left">
                         <li>
-                            <a href="#" class="c1">
+                            <a href="{caminhoURL}{lang}/lancamentos" class="c1">
                                 <span class="bullets-list"></span>
-                                Seeing Double
+                                Novidades
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="c1">
+                            <a href="{caminhoURL}{lang}/qualidade" class="c1">
                                 <span class="bullets-list"></span>
-                                The Sports Stars
+                                Qualidade
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="c1">
+                            <a href="{caminhoURL}{lang}/garantia" class="c1">
                                 <span class="bullets-list"></span>
-                                Tip Of The Week
+                                Garantia
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="c1">
+                            <a href="{caminhoURL}{lang}/seguranca" class="c1">
                                 <span class="bullets-list"></span>
-                                Battle Of Battles
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="c1">
-                                <span class="bullets-list"></span>
-                                The Keeper's Cup
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="c1">
-                                <span class="bullets-list"></span>
-                                Say It Like You Mean It
+                                Segurança
                             </a>
                         </li>
                     </ul>
