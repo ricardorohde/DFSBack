@@ -78,7 +78,10 @@ if(!empty($_SESSION['lang'])){
 }
 
 
-$iT 		= new InterFaces(new Arquivos(Sistema::$layoutCaminhoDiretorio."index.html"));
+if(empty($pagina))
+    $iT 		= new InterFaces(new Arquivos(Sistema::$layoutCaminhoDiretorio."index.html"));
+else
+    $iT 		= new InterFaces(new Arquivos(Sistema::$layoutCaminhoDiretorio."index-interna.html"));
 
 $iT->setSESSION($_SESSION);
 $iT->trocar('lang', $_SESSION['lang']);
