@@ -23,3 +23,34 @@
 .c5 a {
     color: #53575a;
 }
+
+.infocontact{width:250px;position:absolute;z-index:1;margin-top:-435px;margin-left:60px;}
+.titleinfocontact{color:#FFF;padding:15px 0;width:100%;text-align:center}
+.infocontactdark .contentinfocontact{background-color:#434A54}
+.infocontactdark .markercontactmap .innercirclemarker{background-color:#434A54}
+.infocontactdark .triangleinfocontact span{border-top:10px solid #434A54}
+.infocontactdark .contentinfocontact ul li{border-bottom:1px solid #434A54}
+.infocontactdark .contentinfocontact ul li p{color:#FFF}
+.infocontactlight .contentinfocontact{background-color:#fff}
+.infocontactlight .markercontactmap .innercirclemarker{background-color:#fff}
+.infocontactlight .triangleinfocontact span{border-top:10px solid #fff}
+.infocontactlight .contentinfocontact ul li{border-bottom:1px solid #EBEEF2}
+.infocontactlight .contentinfocontact ul li p{color:#A9A9A9}
+.contentinfocontact{float:left;width:100%;text-align:center}
+.contentinfocontact ul{float:left;width:100%;margin:0;padding:0;list-style:none}
+.contentinfocontact ul li{float:left;width:100%}
+.contentinfocontact ul li:last-child{border-bottom-width:0}
+.contentinfocontact ul li img{float:left}
+.contentinfocontact ul li p{font-size:13px;padding:15px 20px}
+.triangleinfocontact{width:100%;float:left;height:20px}
+.triangleinfocontact span{width:0;height:0;line-height:0;border-left:10px solid transparent;border-right:10px solid transparent;position:absolute;left:50%;margin-left:-10px}
+.markercontactmap{width:40px;height:50px;margin:auto}
+.markercontactmap .circlemarker{float:left;width:40px;height:40px;border-radius:20px;-moz-border-radius:20px;-webkit-border-radius:20px}
+.markercontactmap .innercirclemarker{float:left;width:16px;height:16px;margin:12px;position:absolute;border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px}
+.markercontactmap .trianglemarker{width:0;height:0;line-height:0;border-left:20px solid transparent;border-right:20px solid transparent;margin-top:-20px;float:left}
+.red .datedayhometour,.red .ui-tabs-active a,.btnpromotion .red,.red .valueprice,.red .priceleftarchivetour,.red .areadmoresinglepostmasonry,.red .btngalleryarchivedestination,.red .btngallerypage,.red .filterinputicon,.red .titleinfocontact,.red .markercontactmap .circlemarker,.red .datearchivesinglepost,.red .btn,.red .readmoredestinationsingleproject,.red .pricesingleproject,.red .arrowcarouselprev,.red .arrowcarouselnext,.red .memberposition,.red .progressbartitle,.red .datesinglepost{background-color:#F76570}
+.red .bulletlisthometour,.red .bulletevidenceleftmenu,.red .bulletarchivedestination,.red .bulletgallery{border:2px solid #F76570}
+.red .triangle{border-top:10px solid #F76570}
+.red .markercontactmap .trianglemarker{border-top:30px solid #F76570}
+.red blockquote,.red .textevidence,.red-borderleft{border-left:2px solid #F76570!important}
+.red .titlewithborder span{border-bottom:1px solid #F76570}

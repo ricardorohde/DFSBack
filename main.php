@@ -204,6 +204,16 @@ if($lGC->getTotal() > 0){
 
 //
 
+//DFS Rodapé
+$lT = new ListaTextos;
+$lT->condicoes('', 8, ListaTextos::ID);
+if($lT->getTotal() > 0){
+    $t = $lT->listar();
+    $iTM->trocar('titulo.DFSRodape', $t->titulo);
+    $iTM->trocar('textoPequeno.DFSRodape', $t->textoPequeno);
+}
+//
+
 //include('lateral-direita.php');
 //$iTM->trocar('lateralDireita', $lateralDireita);
 
