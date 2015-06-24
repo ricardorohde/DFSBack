@@ -32,7 +32,8 @@ class ListaProdutos extends Lista {
 	const MARCA						= 'marca';
 	const CODIGO					= 'codigo';
 	const FRETE						= 'frete';
-	const TIPOPEDIDO				= 'tipopedido';
+    const TIPOPEDIDO				= 'tipopedido';
+    const VIEW      				= 'view';
 	
 	const VALOR_DISPONIVEL_TRUE 	= 1;
     const VALOR_DISPONIVEL_FALSE 	= 0;

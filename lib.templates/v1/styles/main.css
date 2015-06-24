@@ -1,0 +1,1167 @@
+body {
+    font-family: "Gill Sans", sans-serif;
+    font-size: 12px;
+    min-width: 360px
+}
+
+* {
+    outline: 0 !important
+}
+
+input:active, input:focus {
+    box-shadow: none
+}
+
+.inline {
+    display: inline-block
+}
+
+.block {
+    display: block
+}
+
+.relative {
+    position: relative
+}
+
+.full-w {
+    width: 100%
+}
+
+.full-h {
+    height: 100%
+}
+
+a {
+    text-decoration: none
+}
+
+.c0 {
+    color: #000
+}
+
+.c1 {
+    color: #9fa0a2
+}
+
+.c2 {
+    color: #07113d
+}
+
+.c3 {
+    color: #d81f33
+}
+
+.c4 {
+    color: #FFF
+}
+
+.c5 {
+    color: #53575a
+}
+
+.f10 {
+    font-size: 10px
+}
+
+.f14 {
+    font-size: 14px
+}
+
+.f16 {
+    font-size: 16px
+}
+
+.f18 {
+    font-size: 18px
+}
+
+.f20 {
+    font-size: 20px
+}
+
+.f32 {
+    font-size: 32px
+}
+
+.f40 {
+    font-size: 40px
+}
+
+.light {
+    font-weight: 100
+}
+
+.bold {
+    font-weight: 700
+}
+
+a.c0:hover {
+    color: #666
+}
+
+.bg0 {
+    background-color: #050708
+}
+
+.bg1 {
+    background-image: url(../images/60355287.bg-banner_menor.jpg);
+    background-repeat: repeat-x
+}
+
+.bg2 {
+    background-color: #000030
+}
+
+.bg3 {
+    background-color: #444349 !important
+}
+
+.bg4 {
+    background-color: #000030
+}
+
+.bg5 {
+    background-color: #012561
+}
+
+.bg6 {
+    background-color: #818286
+}
+
+.bg7 {
+    background-color: #d2d3d5
+}
+
+.bg8 {
+    background-color: #e6e7e9
+}
+
+.bg9 {
+    background: url(../images/3154e2a2.bg_slogan_leve.jpg) top center/cover
+}
+
+.bg10 {
+    background-color: #670001
+}
+
+.bg11 {
+    background-color: #d61f31
+}
+
+hr.hr1 {
+    border-top-color: #58595b
+}
+
+hr.hr2 {
+    margin-top: 0;
+    width: 150px;
+    border-width: 10px
+}
+
+hr.c1 {
+    border-color: #6d6e70
+}
+
+hr.c3 {
+    border-color: #660001
+}
+
+hr.c4 {
+    border-color: #FFF
+}
+
+.lh12 {
+    line-height: 12px
+}
+
+.lh30 {
+    line-height: 30px
+}
+
+[class*=arrow-] {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent
+}
+
+.arrow-right {
+    border-width: 6px 0 6px 7px
+}
+
+.arrow-bottom {
+    border-width: 6px 6px 0 7px
+}
+
+.arrow-right.c1 {
+    border-color: transparent transparent transparent #ec1824
+}
+
+.arrow-right.c2 {
+    border-color: transparent transparent transparent #818286
+}
+
+.arrow-bottom.c2 {
+    border-color: #818286 transparent transparent
+}
+
+.arrow-bottom.c3 {
+    border-color: #012561 transparent transparent
+}
+
+button.transparent {
+    background: 0 0;
+    border: 0
+}
+
+#Topo .contato ul {
+    display: inline-block
+}
+
+#Topo .contato ul.telefones li {
+    float: left;
+    padding: 0 7px;
+    margin: 0;
+    list-style-position: inside
+}
+
+#Topo .contato ul.telefones li:first-child {
+    list-style: none
+}
+
+#Banner hr {
+    border-top-width: 10px
+}
+
+#Banner h3 {
+    font-style: italic
+}
+
+#Banner .banner .elemento-01 {
+    max-width: 474px
+}
+
+#Banner .banner .elemento-02 {
+    margin-left: -100px
+}
+
+.line-bottom-banner {
+    background-color: #58595b;
+    height: 10px;
+    margin-top: -73px
+}
+
+#Space {
+    height: 90px
+}
+
+#Space .tax_free {
+    position: relative;
+    top: -77px
+}
+
+#Menu {
+    border-top: 1px solid #cfcfcf;
+    border-bottom: 1px solid #cfcfcf
+}
+
+#Menu ul {
+    font-size: 0
+}
+
+#Menu ul li {
+    position: relative;
+    font-size: 12px;
+    margin-top: -7px;
+    padding: 0 !important;
+    background-color: #FFF
+}
+
+#Menu ul li a {
+    z-index: 0;
+    display: block;
+    padding: 42px 41px 34px;
+    border-right: 1px solid #cfcfcf
+}
+
+#Menu ul li:first-child a {
+    position: relative;
+    border-left: 1px solid #cfcfcf
+}
+
+#Menu ul li a:hover {
+    background-color: #EFEFEF;
+    color: #000
+}
+
+#Menu ul li .effect-top-line {
+    position: absolute;
+    width: 100%;
+    top: 6px;
+    z-index: 10;
+    border-top: 1px solid #cfcfcf
+}
+
+#Menu ul li.search {
+    font-size: 40px;
+    vertical-align: top
+}
+
+#Menu ul li.search a {
+    cursor: pointer;
+    padding: 27px 30px 9px
+}
+
+#Menu ul li.search .effect-top-line {
+    border-top-color: #3f3e44
+}
+
+#Menu ul li.search a:hover {
+    background-color: inherit
+}
+
+#Menu .collapse-menu {
+    display: block;
+    padding-top: 2px;
+    line-height: 0
+}
+
+.bdt1 {
+    border-top: 1px solid #cfcfcf
+}
+
+#Omelhor nav ul li a.icone {
+    width: 200px;
+    height: 200px;
+    padding: 20px;
+    margin: 0 10px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 20px
+}
+
+#Omelhor nav ul li a.icone:first-child {
+    margin-left: 0
+}
+
+#Omelhor nav ul li a.icone img {
+    display: inline-block;
+    max-width: 95px;
+    max-height: 95px;
+    vertical-align: -119px
+}
+
+#PrincipaisProdutos nav ul li {
+    padding: 0;
+    float: left
+}
+
+#PrincipaisProdutos nav ul li a {
+    display: inline-block;
+    padding: 8px 60.5px;
+    border: 1px solid #949496;
+    border-right: 0
+}
+
+#PrincipaisProdutos nav ul li:last-child a {
+    border-right: 1px solid #949496
+}
+
+#PrincipaisProdutos nav ul li a {
+    border-right-color: #949496 !important;
+    border-bottom-color: #949496 !important
+}
+
+.grid-item, .grid-sizer {
+    width: 270px;
+    margin: 10px;
+    height: 180px;
+    overflow: hidden;
+    float: left
+}
+
+.grid-item--width2 {
+    width: 560px
+}
+
+.grid-item img {
+    width: 100%
+}
+
+#PrincipaisProdutos article .grid {
+    margin-left: -10px;
+    margin-right: -10px
+}
+
+#PrincipaisProdutos article .grid img {
+    display: inline-block
+}
+
+#PrecosImbativeis .section-middle, #PrecosImbativeis .section-select, #PrecosImbativeis .section-title {
+    height: 190px
+}
+
+#PrecosImbativeis .section-title {
+    padding: 50px 0;
+    text-align: center;
+    width: 239px
+}
+
+#PrecosImbativeis .section-title .arrow-right {
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    border-width: 14px 0 14px 13px;
+    margin-top: -14px
+}
+
+#PrecosImbativeis .section-title .arrow-bottom {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -10.5px;
+    border-width: 10px 10px 0 11px
+}
+
+#PrecosImbativeis .section-select {
+    width: 134px;
+    padding: 40px 15px
+}
+
+#PrecosImbativeis .section-select .baloon {
+    position: relative;
+    padding: 15px 10px;
+    border-radius: 5px;
+    line-height: 20px
+}
+
+#PrecosImbativeis .section-select .arrow-bottom {
+    border-width: 8px 8px 0 9px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -8.5px
+}
+
+#PrecosImbativeis .section-middle {
+    width: 763px
+}
+
+#PrecosImbativeis .section-middle ul {
+    padding: 75px 25px
+}
+
+#PrecosImbativeis .section-middle ul li {
+    vertical-align: middle
+}
+
+#PrecosImbativeis .section-middle ul li a {
+    padding: 0 19px
+}
+
+#PrecosImbativeis #Products .section-middle ul {
+    padding: 47px 26px
+}
+
+#PrecosImbativeis #Ofertas .section-middle ul {
+    padding: 1.5px 26px
+}
+
+#PrecosImbativeis #Ofertas .section-middle ul li {
+    width: 140px
+}
+
+#PrecosImbativeis .border {
+    border-top: 2px solid #edefee;
+    border-bottom: 2px solid #edefee
+}
+
+#DescubraDesejos {
+    height: 445px
+}
+
+#Busca form label {
+    padding-left: 12px
+}
+
+#Busca form input[type=search] {
+    height: 50px;
+    border-radius: 17px
+}
+
+#Busca form button {
+    margin-left: -57px;
+    margin-top: 6px
+}
+
+#DFSTV .thumb {
+    position: relative
+}
+
+#DFSTV .thumb .data {
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 23px;
+    text-align: center;
+    padding: 10px 20px
+}
+
+#DFSTV .thumb .data .day {
+    display: block
+}
+
+#DFSTV .title {
+    margin-top: 30px;
+    display: inline-block
+}
+
+#DFSTV .title .title-icon {
+    display: inline-block;
+    vertical-align: top;
+    padding-right: 20px
+}
+
+#DFSTV .effect-right {
+    width: 7px;
+    height: 56px;
+    display: inline-block;
+    background-image: url(../images/dfstv/3f6293bd.effect-right.jpg);
+    vertical-align: 0
+}
+
+#DFSTV .title-text {
+    margin-left: 20px
+}
+
+#DFSTV .title-left, #DFSTV .title-text {
+    display: inline-block
+}
+
+#ConhecerVoce .info {
+    padding: 46px 0
+}
+
+#ConhecerVoce form label {
+    padding-left: 5px;
+    font-weight: 400
+}
+
+#ConhecerVoce form .form-control {
+    border-radius: 0;
+    box-shadow: none !important
+}
+
+#ConhecerVoce form input.form-control {
+    height: 52px;
+    margin-top: -25px;
+    padding-top: 20px
+}
+
+#ConhecerVoce form textarea.form-control {
+    height: 150px;
+    resize: none
+}
+
+#SlideFooter .item {
+    padding-top: 80px;
+    background-size: cover
+}
+
+#SlideFooter .item div.inline {
+    vertical-align: top
+}
+
+#SlideFooter .image {
+    width: 250px;
+    margin-right: 20px
+}
+
+#SlideFooter .description {
+    width: 667px
+}
+
+#SlideFooter .controls .bullets {
+    list-style: none;
+    text-align: center
+}
+
+#SlideFooter .controls .bullets li {
+    display: inline-block;
+    border: 2px solid #FFF;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%
+}
+
+#SlideFooter .controls .bullets li.active {
+    background-color: #FFF
+}
+
+#AditionalInfo ul .bullets-list {
+    width: 8px;
+    height: 8px;
+    background-color: #FFF;
+    border-radius: 100%;
+    display: inline-block;
+    vertical-align: 0;
+    margin-right: 10px
+}
+
+#AditionalInfo .links li a {
+    display: block;
+    padding: 7px 0
+}
+
+#AditionalInfo .photos a {
+    display: block;
+    padding: 0 0 5px
+}
+
+#AditionalInfo .photos li {
+    padding-left: 0;
+    padding-right: 5px
+}
+
+footer {
+    padding: 50px 0
+}
+
+footer ul li a {
+    display: block;
+    padding: 0 10px
+}
+
+footer a:active, footer a:focus, footer a:hover {
+    color: #FFF
+}
+
+.mg0 {
+    margin: 0
+}
+
+.mgt0 {
+    margin-top: 0
+}
+
+.mgt5 {
+    margin-top: 5px
+}
+
+.mgt7 {
+    margin-top: 7px
+}
+
+.mgt10 {
+    margin-top: 10px
+}
+
+.mgt20 {
+    margin-top: 20px
+}
+
+.mgt30 {
+    margin-top: 30px
+}
+
+.mgt40 {
+    margin-top: 40px
+}
+
+.mgt50 {
+    margin-top: 50px
+}
+
+.mgt80 {
+    margin-top: 80px
+}
+
+.mgt100 {
+    margin-top: 100px
+}
+
+.mgr0 {
+    margin-right: 0
+}
+
+.mgr10 {
+    margin-right: 10px
+}
+
+.mgr20 {
+    margin-right: 20px
+}
+
+.mgb0 {
+    margin-bottom: 0
+}
+
+.mgb10 {
+    margin-bottom: 10px
+}
+
+.mgb20 {
+    margin-bottom: 20px
+}
+
+.mgb40 {
+    margin-bottom: 40px
+}
+
+.mgb100 {
+    margin-bottom: 100px
+}
+
+.mgl0 {
+    margin-left: 0
+}
+
+.mgl8 {
+    margin-left: 5px
+}
+
+.mgl10 {
+    margin-left: 10px
+}
+
+.pd0 {
+    padding: 0
+}
+
+.pd5 {
+    padding: 5px
+}
+
+.pd10 {
+    padding: 10px
+}
+
+.pdt2 {
+    padding-top: 2px
+}
+
+.pdt4 {
+    padding-top: 4px
+}
+
+.pdt5 {
+    padding-top: 5px
+}
+
+.pdt10 {
+    padding-top: 10px
+}
+
+.pdt15 {
+    padding-top: 15px
+}
+
+.pdt20 {
+    padding-top: 20px
+}
+
+.pdb2 {
+    padding-bottom: 2px
+}
+
+.pdb4 {
+    padding-bottom: 4px
+}
+
+.pdb5 {
+    padding-bottom: 5px
+}
+
+.pdb15 {
+    padding-bottom: 15px
+}
+
+.pdb20 {
+    padding-bottom: 20px
+}
+
+.pdb40 {
+    padding-bottom: 40px
+}
+
+.pdl0 {
+    padding-left: 0
+}
+
+.pdl10 {
+    padding-left: 10px
+}
+
+@media (max-width: 767px) {
+    .text-xs-left {
+        text-align: left
+    }
+
+    .text-xs-center {
+        text-align: center
+    }
+
+    .text-xs-right {
+        text-align: right
+    }
+
+    #Banner .banner .elemento-01 {
+        width: 269px
+    }
+
+    #Banner .banner h3 {
+        font-size: 14px
+    }
+
+    #Menu ul li {
+        width: 100%;
+        margin-top: 0
+    }
+
+    #Menu ul li a {
+        border-top: 1px solid #CFCFCF;
+        border-left: 1px solid #cfcfcf
+    }
+
+    #Menu ul li .effect-top-line {
+        display: none
+    }
+
+    #MenuProdutosPrincipais ul li, #MenuProdutosPrincipais ul li a {
+        width: 100%
+    }
+
+    #MenuProdutosPrincipais ul li a {
+        border-right-width: 1px !important;
+        border-right-style: solid !important;
+        border-bottom: 0 !important
+    }
+
+    #MenuProdutosPrincipais ul li:last-child a {
+        border-bottom-width: 1px !important;
+        border-bottom-style: solid !important
+    }
+
+    #PrincipaisProdutos article .grid-item {
+        text-align: center;
+        display: inline-block;
+        float: none !important;
+        width: 100% !important
+    }
+
+    #PrincipaisProdutos article .grid-item img {
+        width: auto !important
+    }
+
+    #PrecosImbativeis .section-title {
+        width: 100%;
+        padding: 10px 0;
+        height: auto;
+        text-align: center
+    }
+
+    #PrecosImbativeis .section-title img {
+        display: inline-block
+    }
+
+    #PrecosImbativeis .section-title h1 {
+        margin-top: 10px
+    }
+
+    #PrecosImbativeis .section-middle {
+        width: 100%;
+        height: auto;
+        text-align: center;
+        border-left: 2px solid #edefee;
+        border-right: 2px solid #edefee
+    }
+
+    #PrecosImbativeis .section-middle ul.list-inline li {
+        display: block;
+        width: 100% !important;
+        text-align: center
+    }
+
+    #PrecosImbativeis .section-middle ul.list-inline li img {
+        display: inline-block
+    }
+
+    #PrecosImbativeis .section-middle ul li a {
+        display: block;
+        padding: 20px 0
+    }
+
+    #PrecosImbativeis .section-select {
+        width: 100%
+    }
+
+    #SlideFooter .image {
+        width: 100%;
+        text-align: center
+    }
+
+    #SlideFooter .image img {
+        width: 250px;
+        display: inline-block
+    }
+
+    #SlideFooter .description {
+        width: 100%;
+        text-align: center
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .text-sm-left {
+        text-align: left
+    }
+
+    .text-sm-center {
+        text-align: center
+    }
+
+    .text-sm-right {
+        text-align: right
+    }
+
+    #Menu ul li a {
+        padding: 30px 13px 23px
+    }
+
+    #Menu ul li.search a {
+        font-size: 38px;
+        padding: 15px 15px 0
+    }
+
+    #Menu ul li {
+        width: 100%;
+        margin-top: 0
+    }
+
+    #Menu ul li a {
+        border-top: 1px solid #CFCFCF;
+        border-left: 1px solid #cfcfcf
+    }
+
+    #Menu ul li .effect-top-line {
+        display: none
+    }
+
+    #MenuProdutosPrincipais ul li, #MenuProdutosPrincipais ul li a {
+        width: 100%
+    }
+
+    #MenuProdutosPrincipais ul li a {
+        border-right-width: 1px !important;
+        border-right-style: solid !important;
+        border-bottom: 0 !important
+    }
+
+    #MenuProdutosPrincipais ul li:last-child a {
+        border-bottom-width: 1px !important;
+        border-bottom-style: solid !important
+    }
+
+    #PrincipaisProdutos article .grid-item {
+        width: 165px;
+        height: 124px
+    }
+
+    #PrincipaisProdutos article .grid-item--width2 {
+        width: 350px
+    }
+
+    #PrecosImbativeis .section-title {
+        width: 100%;
+        padding: 10px 0;
+        height: auto;
+        text-align: center
+    }
+
+    #PrecosImbativeis .section-title img {
+        display: inline-block
+    }
+
+    #PrecosImbativeis .section-title h1 {
+        margin-top: 10px
+    }
+
+    #PrecosImbativeis .section-middle {
+        width: 100%;
+        height: auto;
+        text-align: center;
+        border-left: 2px solid #edefee;
+        border-right: 2px solid #edefee
+    }
+
+    #PrecosImbativeis .section-middle ul.list-inline li {
+        display: block;
+        width: 100% !important;
+        text-align: center
+    }
+
+    #PrecosImbativeis .section-middle ul.list-inline li img {
+        display: inline-block
+    }
+
+    #PrecosImbativeis .section-middle ul li a {
+        display: block;
+        padding: 20px 0
+    }
+
+    #PrecosImbativeis .section-select {
+        width: 100%
+    }
+
+    #SlideFooter .image {
+        width: 100%;
+        text-align: center
+    }
+
+    #SlideFooter .image img {
+        width: 250px;
+        display: inline-block
+    }
+
+    #SlideFooter .description {
+        width: 100%;
+        text-align: center
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .text-sm-left {
+        text-align: left
+    }
+
+    .text-md-center {
+        text-align: center
+    }
+
+    .text-md-right {
+        text-align: right
+    }
+
+    #Menu ul li a {
+        padding: 30px 28px 23px
+    }
+
+    #Menu ul li.search a {
+        font-size: 38px;
+        padding: 16px 20px 0
+    }
+
+    #Menu .collapse {
+        display: block;
+        height: auto !important
+    }
+
+    #MenuProdutosPrincipais ul li a {
+        padding: 8px 44px !important
+    }
+
+    #PrincipaisProdutos article .grid-item {
+        width: 220px
+    }
+
+    #PrincipaisProdutos article .grid-item--width2 {
+        width: 460px
+    }
+
+    #PrecosImbativeis .section-title {
+        width: 186px
+    }
+
+    #PrecosImbativeis .section-middle {
+        width: 620px
+    }
+}
+
+@media (min-width: 1200px) {
+    .text-lg-left {
+        text-align: left
+    }
+
+    .text-lg-center {
+        text-align: center
+    }
+
+    .text-lg-right {
+        text-align: right
+    }
+
+    #Menu .collapse {
+        display: block;
+        height: auto !important
+    }
+}
+
+.items .item img {
+    max-width: 100%;
+}
+
+.owl-theme .owl-controls {
+    position: relative;
+    top: -75px;
+    z-index: 100;
+}
+
+#ThumbsProdutos li a span {
+    display: block;
+    width: 90px;
+    height: 80px;
+    overflow: hidden;
+}
+
+#ThumbsProdutos li a span img {
+    width: auto;
+    max-width: none;
+}
+
+.preco-promocao .precoreal {
+    text-decoration: line-through;
+}
+
+.preco-promocao .preco .valor {
+    margin-top: -38px;
+}
+
+.lateral-esquerda-categorias h3 {
+    border-bottom: 1px solid #DEDEDE;
+    padding-bottom: 10px;
+}
+
+.lateral-esquerda-categorias li ul li a {
+    display: block;
+    padding: 5px 0;
+    color: #444;
+}
+
+.lateral-esquerda-categorias a:hover {
+    color: #d81f33;
+}
+
+#ListagemProdutos .produto .imagem {
+    display: block;
+    width: 100%;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+.owl-theme .owl-controls{
+    top: 10px;
+}
+.form-group #InpSearch {
+    width: 90%;
+}
+.form-group button[type='submit']{
+    width: 10%;
+}
+
+#TopoCarousel .owl-controls {
+    top: -80px;
+}
