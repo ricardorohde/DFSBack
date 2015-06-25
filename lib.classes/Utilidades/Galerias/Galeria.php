@@ -70,9 +70,12 @@ class Galeria extends Objeto {
 		if(!empty($this->video)){
 			
 			$p = explode("&", $this->video);
-			if(!eregi('http://www.youtube.com/v/', $p[0]))
-				return "http://www.youtube.com/v/".str_replace('http://www.youtube.com/watch?v=', '', $p[0])."&hl=en_US&fs=1&";	
-			else
+            if(!eregi('www.youtube.com/v/', $p[0]))
+                if(eregi('https', $p[0]))
+                    return "http://www.youtube.com/v/".str_replace('https://www.youtube.com/watch?v=', '', $p[0])."&hl=en_US&fs=1&";
+                else
+                    return "http://www.youtube.com/v/".str_replace('http://www.youtube.com/watch?v=', '', $p[0])."&hl=en_US&fs=1&";
+            else
 				return $p[0];
 			
 		}

@@ -152,38 +152,39 @@ while($po = $lPO->listar('DESC',ListaProdutos::ID)) {
 
 //DFS/TV
 
-$lN = new ListaNoticias;
-$lN->condicoes();
-$iTM->condicao('condicao->DFS/TV.Noticia', $lN->getTotal() > 0);
-if($lN->getTotal() > 0){
+$lGC = new ListaGaleriaCategorias;
+$lGC->condicoes('', 2, ListaGaleriaCategorias::ID);
+if($lGC->getTotal() > 0){
 
-    $iTM->createRepeticao("repetir->DFS/TV.Noticia");
-    while($n = $lN->listar("DESC", ListaNoticias::ID)){
-        $img = $n->getTexto()->getImagem();
-        if($img->getImage()->nome != "") {
-
+    $gC = $lGC->listar();
+    $iTM->condicao('condicao->DFS/TV.Galeria', $gC->getGalerias()->getTotal() > 0);
+    $iTM->createRepeticao("repetir->DFS/TV.Galeria");
+    while($g = $gC->getGalerias()->listar("DESC", ListaGalerias::ID)){
+        if($g->getImagens()->getTotal() > 0){
             $iTM->repetir();
+            $img = $g->getImagens()->listar("DESC", ListaImagens::DESTAQUE);
+            if($img->getImage()->nome != "")
+                $iTM->enterRepeticao()->trocar("url.Imagem.Galeria", $img->getImage()->pathImage(555, 416));
 
-            $iTM->enterRepeticao()->trocar('dia.Data.Noticia', $n->getData()->mostrar("d"));
-            $iTM->enterRepeticao()->trocar('mesExtenso.Data.Noticia', $n->getData()->mesExtenso());
+            $iTM->enterRepeticao()->trocar('dia.Data.Galeria', $g->getData()->mostrar("d"));
+            $iTM->enterRepeticao()->trocar('mesExtenso.Data.Galeria', $g->getData()->mesExtenso());
 
-            $iTM->enterRepeticao()->trocar('url.Imagem.Noticia', $img->getImage()->pathImage(555, 416));
-            $iTM->enterRepeticao()->trocar('titulo.Noticia', $n->getTexto()->titulo);
-            $iTM->enterRepeticao()->trocar('subTitulo.Noticia', $n->getTexto()->subTitulo);
+            $iTM->enterRepeticao()->trocar('url.Imagem.Galeria', $img->getImage()->pathImage(555, 416));
+            $iTM->enterRepeticao()->trocar('titulo.Galeria', $g->titulo);
+            $iTM->enterRepeticao()->trocar('local.Galeria', $g->local);
 
-            $iTM->enterRepeticao()->trocar('linkVisualizar.Noticia', Sistema::$caminhoURL.$_SESSION['lang']."/".$n->getURL()->url);
-
+            $iTM->enterRepeticao()->trocar("linkVisualizar.Galeria", Sistema::$caminhoURL.$_SESSION['lang']."/fotos/".$gC->getURL()->url."/".$g->getURL()->url);
         }
     }
 
-}
+}else
+    $iTM->condicao('condicao->DFS/TV.Galeria', false);
 
 //
 
 //Pontos Turísticos
 
-$lGC = new ListaGaleriaCategorias;
-$lGC->condicoes('', 1);
+$lGC->condicoes('', 1, ListaGaleriaCategorias::ID);
 if($lGC->getTotal() > 0){
 
     $gC = $lGC->listar();
