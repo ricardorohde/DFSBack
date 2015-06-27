@@ -27,15 +27,45 @@
         {else:condicao->video}
         <div class="col-xs-12 col-md-6">
             <div class="img">
-                <img src="{url.Imagem}" class="img-responsive" />
+                <a href="{url.ImagemGrande}" class="gallery">
+                    <img src="{url.Imagem}" class="img-responsive" />
+                </a>
             </div>
-            {repetir->Imagens}
-            <div class="col-xs-6 col-sm-4 mgt5 img-thumb">
-                <div class="row">
-                    <img src="{url.thumb.imagem.Imagem}" class="img-responsive" />
+            <div id="Thumbs">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner mgt10" role="listbox">
+                        <div class="item active">
+                            <div class="row">
+                                {repetir->Imagens}
+                                    <div class="col-xs-4 col-md-4 thumbnails">
+                                        <a href="{imagem.Imagem}" class="gallery" rel="gal">
+                                            <img src="{url.thumb.imagem.Imagem}" class="img-responsive" />
+                                        </a>
+                                    </div>
+                                    {condicao->BreakLine}
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="row">
+                                    {condicao->BreakLine}
+                                {repetir->Imagens}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
             </div>
-            {repetir->Imagens}
         </div>
         {condicao->video}
         <div class="col-xs-12 col-md-6">

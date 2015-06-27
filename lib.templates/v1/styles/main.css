@@ -1165,3 +1165,7 @@ footer a:active, footer a:focus, footer a:hover {
 #TopoCarousel .owl-controls {
     top: -80px;
 }
+
+#Thumbs .item .thumbnails{
+    display: inline-block;
+}

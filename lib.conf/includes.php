@@ -30,7 +30,7 @@ function importar($classe = ''){
 	   
    }else{
       
-	  echo 'Classe "'.Sistema::$caminhoDiretorio.$classe.'" não encontrada. <br/>';
+	  echo 'Classe "'.Sistema::$caminhoDiretorio.$classe.'" nï¿½o encontrada. <br/>';
 	  exit;
 	  
    }
@@ -69,5 +69,3 @@ importar("Utils.Dados.Strings");
 importar("Geral.Lista.ListaURLs");
 importar("Geral.Lista.ListaTextos");
 importar("Geral.Lista.ListaImagens");
-	
-?>

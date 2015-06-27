@@ -1,5 +1,4 @@
 <?php
-
 importar("Utilidades.Galerias.Lista.ListaGalerias");
 importar("Utilidades.UploadsDownloads.Lista.ListaUploadDownloadCategorias");
 
@@ -76,35 +75,48 @@ if($lG->getTotal() > 0){
 		//$g->getImagens()->setParametros($num+$p, 'limite')->setParametros($p);
 		$iTDG->trocar('posicao.Imagens', empty($p) ? 1 : $p+1);
 		$anterior = '';
-		
-		//$n = 0;
-		
-		while($img = $g->getImagens()->listar("DESC", ListaImagens::DESTAQUE)){
-			
-			$iTDG->repetir();
-			
-			//$n++;
-			
-			$iTDG->enterRepeticao()->trocar('376.282.anterior.url.imagem.Imagem', $anterior);
-			
-			$iTDG->enterRepeticao()->trocar('posicao.Imagem', $g->getImagens()->getParametros());
-			$iTDG->enterRepeticao()->trocar('legenda.Imagem', nl2br($img->legenda));
-			$iTDG->enterRepeticao()->trocar('url.Imagem', Sistema::$caminhoURL.Sistema::$caminhoDataGalerias.$img->getImage()->nome.'.'.$img->getImage()->extensao);
-			$iTDG->enterRepeticao()->trocar('290.290.url.imagem.Imagem', $img->getImage()->pathImage(290, 290));
-			$iTDG->enterRepeticao()->trocar('url.thumb.imagem.Imagem', $img->getImage()->pathImage(200, 1000));
-			$iTDG->enterRepeticao()->trocar('imagem.Imagem', $img->getImage()->showHTML(800, 800));
-						
+
+		$n = 0;
+		$cont=0;
+        unset($cond);
+        $lImg = $g->getImagens();
+		while($img = $lImg->listar("DESC", ListaImagens::DESTAQUE)){
+			if($img->destaque != 1) {
+                $iTDG->repetir();
+
+                $n++;
+                $cont++;
+
+                $iTDG->enterRepeticao()->trocar('376.282.anterior.url.imagem.Imagem', $anterior);
+
+                $iTDG->enterRepeticao()->trocar('posicao.Imagem', $g->getImagens()->getParametros());
+                $iTDG->enterRepeticao()->trocar('legenda.Imagem', nl2br($img->legenda));
+                $iTDG->enterRepeticao()->trocar('url.Imagem', Sistema::$caminhoURL . Sistema::$caminhoDataGalerias . $img->getImage()->nome . '.' . $img->getImage()->extensao);
+                $iTDG->enterRepeticao()->trocar('290.290.url.imagem.Imagem', $img->getImage()->pathImage(290, 290));
+                $iTDG->enterRepeticao()->trocar('url.thumb.imagem.Imagem', $img->getImage()->pathImage(200, 1000));
+                $iTDG->enterRepeticao()->trocar('imagem.Imagem', $img->getImage()->pathImage(800, 800));
+
+
+                if ($cont >= 3 && $n < $g->getImagens()->getTotal()) {
+                    $iTDG->enterRepeticao()->condicao('condicao->BreakLine', true);
+                    $cont = 0;
+                } else {
+                    $iTDG->enterRepeticao()->condicao('condicao->BreakLine', false);
+                }
+            }
 		}
 		
 		//$iTDG->trocar('totalPag.Imagens', $n);
 	
 	}
-	
-	$g->getImagens()->setParametros(0);
-	$img = $g->getImagens()->listar("DESC", ListaImagens::DESTAQUE);
+
+    $lImg = $g->getImagens();
+    $lImg->setParametros(0);
+	$img = $lImg->listar("DESC", ListaImagens::DESTAQUE);
 	if(!empty($img)){
 		$iTDG->trocar('imagem', $img->getImage()->showHTML(290, 290));
-		$iTDG->trocar('url.Imagem', $img->getImage()->pathImage(700, 550));
+        $iTDG->trocar('url.Imagem', $img->getImage()->pathImage(700, 550));
+        $iTDG->trocar('url.ImagemGrande', $img->getImage()->pathImage(800, 600));
 	}
 	
 	//if($iTDG->enterRepeticao())
@@ -163,7 +175,6 @@ if($lG->getTotal() > 0){
 $javaScript .= $iTDG->createJavaScript()->concluir();
 
 $iTDG->trocar("linkVoltar", Sistema::$caminhoURL.$_REQUEST['lang'].'/galeria');
-
 $includePagina = $iTDG->concluir();
 
 ?>

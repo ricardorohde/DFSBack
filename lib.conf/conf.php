@@ -3,9 +3,9 @@
 class Sistema {
 
     public static $BDHost 							= 'localhost';
-    public static $BDBanco							= 'pioneeri_v3';
-    public static $BDUsuario						= 'pioneeri_dfs'; //onoteatrouser
-    public static $BDSenha 							= '~7D,cIp[e**C'; //#8/wkVTFx=
+    public static $BDBanco							= 'jnt_dfs';
+    public static $BDUsuario						= 'root'; //onoteatrouser
+    public static $BDSenha 							= ''; //#8/wkVTFx=
     public static $BDPrefixo						= 'dfs_';
 	
 	public static $caminhoDiretorio					= '/';

@@ -1,5 +1,4 @@
 <?php
-
 include("lib.conf/includes.php");
 
 importar("Geral.Lista");
